@@ -1,5 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
+import "./Navbar.css";  
 
 import logo from "./logo/oar_logo.png"
 import { Input, Button } from 'antd';
@@ -12,7 +13,7 @@ export default function Navbar() {
       <img src={logo} alt="Logo" />
     </div>
     <div>
-      <Search placeholder="Search your topic..." allowClear enterButton />
+      <Search class="searchbar" placeholder="Search your topic..." allowClear enterButton />
     </div>
     <div>
       <Button >Log In</Button>

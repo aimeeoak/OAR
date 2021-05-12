@@ -1,5 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
+import './SearchFilter.css';
 
 import { Menu, Checkbox, DatePicker, Space, Button } from 'antd';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
@@ -21,7 +22,7 @@ export default function SearchFilter() {
   };
 
   return (
-    <Menu mode="inline" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256 }}>
+    <Menu class="filterbox" mode="inline" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256 }}>
       <SubMenu key="sub1" icon={<MailOutlined />} title="Search Filters">
         <Menu.Item key="1"><Checkbox /> Journals </Menu.Item>
         <Menu.Item key="2"><Checkbox /> Books </Menu.Item>
