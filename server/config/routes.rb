@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :api do
+    resources :libraries
+  end
+  namespace :api do
     resources :articles
   end
   namespace :api do
