@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import SearchFilter from "./components/body/SearchFilter"
+import LibraryFilter from "./components/body/LibraryFilter"
 import Navbar from "./components/navbar/Navbar"
 import Footer from "./components/footer/Footer"
 
