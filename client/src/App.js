@@ -1,11 +1,14 @@
 // import logo from '../logo.svg';
 import React, { useState } from 'react';
 import './App.css';
-import SearchFilter from "./body/SearchFilter"
-import Navbar from "./navbar/Navbar"
-import Footer from "./footer/Footer"
+import SearchFilter from "./components/body/SearchFilter"
+import Navbar from "./components/navbar/Navbar"
+import Footer from "./components/footer/Footer"
 
-import egg from "./navbar/logo/egg.jpg"
+import Library from "./components/library/Library"
+import SearchView from "./components/search/SearchView"
+
+import egg from "./components/navbar/logo/egg.jpg"
 
 function App() {
   const [message, setMessage] = useState("He waits...")
@@ -18,9 +21,12 @@ function App() {
 
   return (
     <div className="App">
-        <Navbar />
+        <SearchView />
         <SearchFilter />
       <div>
+        <div>
+          <Library />
+        </div>
       <h1>{ message }</h1>
       {eggState && <img src={egg} alt="Egg" />}
       {!eggState && <button onClick={greatIdea} > Do you dare? </button>}
