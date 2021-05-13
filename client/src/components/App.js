@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import SearchFilter from "./body/SearchFilter"
+import LibraryFilter from "./body/LibraryFilter"
 import Navbar from "./navbar/Navbar"
 import Footer from "./footer/Footer"
 
@@ -19,7 +20,10 @@ function App() {
   return (
     <div className="App">
         <Navbar />
-        <SearchFilter />
+        <div className="filters-container">
+          <SearchFilter />
+          <LibraryFilter />
+        </div>
       <div>
       <h1>{ message }</h1>
       {eggState && <img src={egg} alt="Egg" />}

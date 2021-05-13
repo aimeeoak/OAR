@@ -1,4 +1,13 @@
-filterbox {
-    background-color: aqua;
+.search-filterbox {
+    color: white;
+    background-color: #52899b;
+    border-radius: 15px;
+    margin: 10px;
+}
 
+.search-submit {
+    color: white;
+    font-weight: 700;
+    background-color: #A2D4E5;
+    border-radius: 5px;
 }

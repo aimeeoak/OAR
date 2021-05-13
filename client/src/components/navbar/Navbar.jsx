@@ -9,15 +9,17 @@ const { Search } = Input;
 
 export default function Navbar() {
   return <div>
-    <div>
-      <img src={logo} alt="Logo" />
-    </div>
+    <section class="topbar">
+      <img src={logo} class="logo" alt="Logo" />
+      <div className="button">
+        <Button>Support</Button>
+        <Button>Log In</Button>
+        <Button className="sign-up" shape="round">Sign Up</Button>
+      </div>
+    </section>
+  
     <div>
       <Search class="searchbar" placeholder="Search your topic..." allowClear enterButton />
-    </div>
-    <div>
-      <Button >Log In</Button>
-      <Button type="primary" shape="round">Sign Up</Button>
     </div>
   </div>
 }
