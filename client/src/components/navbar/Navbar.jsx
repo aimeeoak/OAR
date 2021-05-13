@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'antd/dist/antd.css';
+import "./Navbar.css";  
 
-<<<<<<< HEAD
-=======
 import logo from "./logo/oar_logo.png"
 import { Input, Button } from 'antd';
 
-
 const { Search } = Input;
 
-export default function Navbar() {
+export default function SearchView() {
   const [search, setSearch] = useState("");
 
   const updateSearchString = event => {
@@ -42,5 +40,3 @@ export default function Navbar() {
     </div>
   </div>
 }
-
->>>>>>> sajan/search-view
