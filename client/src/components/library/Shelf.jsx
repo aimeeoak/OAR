@@ -3,9 +3,9 @@ import React from "react";
 import ArticleItem from "./ArticleItem";
 import ProjectItem from "./ProjectItem"; 
 
-import useLibData from '../../hooks/library_hooks/useLibData';
+import useLibData from '../../hooks/useLibData';
 
-import { getArticlesByProject } from "../../helpers/library/library_selectors";
+import { getArticlesByProject } from "../../helpers/library_selectors";
 
 export default function Shelf(props) {
 
