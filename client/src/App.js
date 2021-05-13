@@ -6,7 +6,6 @@ import Navbar from "./components/navbar/Navbar"
 import Footer from "./components/footer/Footer"
 
 import Library from "./components/library/Library"
-import SearchView from "./components/search/SearchView"
 
 import egg from "./components/navbar/logo/egg.jpg"
 
@@ -21,7 +20,7 @@ function App() {
 
   return (
     <div className="App">
-        <SearchView />
+        <Navbar />
         <SearchFilter />
       <div>
         <div>
