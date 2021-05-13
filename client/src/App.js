@@ -21,8 +21,11 @@ function App() {
 
   return (
     <div className="App">
-        <SearchView />
-        <SearchFilter />
+        <Navbar />
+        <div className="filters-container">
+          <SearchFilter />
+          <LibraryFilter />
+        </div>
       <div>
         <div>
           <Library />
