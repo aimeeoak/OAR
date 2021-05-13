@@ -1,0 +1,15 @@
+.library-filterbox {
+    color: white;
+    background-color: #9EC1A3;
+    border-radius: 15px;
+    margin: 10px;
+    height: 300px;
+}
+
+.library-submit {
+    color: white;
+    font-weight: 700;
+    background-color: #CFE0C3;
+    border-radius: 5px;
+    display: flex;
+}

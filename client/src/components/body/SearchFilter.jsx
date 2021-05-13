@@ -1,5 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
+import './SearchFilter.css';
 
 import { Menu, Checkbox, DatePicker, Space, Button } from 'antd';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
@@ -12,7 +13,7 @@ export default function SearchFilter() {
   const [openKeys, setOpenKeys] = React.useState(['']);
 
   const onOpenChange = keys => {
-    const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);
+    const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1)
     if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
       setOpenKeys(keys);
     } else {
@@ -21,7 +22,7 @@ export default function SearchFilter() {
   };
 
   return (
-    <Menu mode="inline" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256 }}>
+    <Menu className="search-filterbox" mode="inline" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256 }}>
       <SubMenu key="sub1" icon={<MailOutlined />} title="Search Filters">
         <Menu.Item key="1"><Checkbox /> Journals </Menu.Item>
         <Menu.Item key="2"><Checkbox /> Books </Menu.Item>
@@ -57,7 +58,7 @@ export default function SearchFilter() {
         <Menu.Item key="16"><Checkbox /> Eliksni </Menu.Item>
         <Menu.Item key="17"><Checkbox /> ...English </Menu.Item>
       </SubMenu>
-      <Menu.Item key="18"><Button type="primary">Submit</Button></Menu.Item>
+      <Menu.Item key="18"><Button className="search-submit">Submit</Button></Menu.Item>
     </Menu>
   );
 };
