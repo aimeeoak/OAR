@@ -24,7 +24,7 @@ export default function SearchView() {
 
   return <div id="topbar">
     <div>
-      <img src={logo} class="logo" alt="Logo" />
+      <img src={logo} class="logo" alt="OAR: Open Academic Research - research without paywalls Logo" />
     </div>
     <form onSubmit={event => event.preventDefault()}>
       <Search placeholder="Search your topic..." 
