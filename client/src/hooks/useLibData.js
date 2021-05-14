@@ -14,9 +14,9 @@ export default function useLibData() {
   
   useEffect(() => {
     Promise.all([
-      axios.get('/api/users'),
-      axios.get('/api/projects'),
-      axios.get('/api/articles')
+      axios.get('/users'),
+      axios.get('/projects'),
+      axios.get('/articles')
     ])
     .then(all => {
       setState(prev => (
@@ -30,7 +30,7 @@ export default function useLibData() {
   }, []);
 
   const selectArticle = function(id) {
-    return axios.get(`/api/articles/${id}`)
+    return axios.get(`/articles/${id}`)
     .then(res => {
       setState(prev => ({
         ...prev,
@@ -48,7 +48,7 @@ export default function useLibData() {
       ...state.article,
       flagged: !flagStatus
     };
-    return axios.put(`/api/articles/${id}`, articleCopy);
+    return axios.put(`/articles/${id}`, articleCopy);
   }
 
   const moveArticle = function(article_id, project_id) {
@@ -56,7 +56,7 @@ export default function useLibData() {
       ...state.article,
       project: project_id
     };
-    return axios.put(`/api/articles/${article_id}`, articleCopy);
+    return axios.put(`/articles/${article_id}`, articleCopy);
   }
 
   const deleteArticle = function(id) {
@@ -64,7 +64,7 @@ export default function useLibData() {
       ...prev,
       article: null
     }))
-    return axios.delete(`/api/articles/${id}`)
+    return axios.delete(`/articles/${id}`)
   }
 
   return { state, selectArticle, closeArticle, flagArticle, moveArticle, deleteArticle }
