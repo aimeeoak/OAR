@@ -29,7 +29,7 @@ export default function useAppData() {
   })
 
   useEffect(() => {
-    return axios.get('/api/projects')
+    return axios.get('/projects')
     .then(res => {
       setState(prev => (
         { 
@@ -71,7 +71,7 @@ export default function useAppData() {
       }
     });
     for (const article of articlesToSave) {
-      axios.post('/api/articles', article); // find a better way to do this
+      axios.post('/articles', article); // find a better way to do this
     }
   }
 
