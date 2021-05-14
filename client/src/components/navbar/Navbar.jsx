@@ -5,21 +5,27 @@ import "./Navbar.css";
 import logo from "./logo/oar_logo.png"
 import { Input, Button } from 'antd';
 
+import useAppData from "../../hooks/useAppData"
+
 const { Search } = Input;
 
 export default function SearchView() {
-  const [search, setSearch] = useState("");
+  const { state, updateSearchParameter, 
+    callSearchAPI, updateQuery, 
+    saveArticles, selectArticleForSaving } = useAppData();
+
+  /* const [search, setSearch] = useState("");
 
   const updateSearchString = event => {
     const searchString = event.target.value;
     setSearch(searchString);
-  }
+  } */
 
   const handleSubmit = (event) => {
-    if (search === "") {
+    if (state.searchQuery === "") {
       return
     }
-    console.log(search);
+    console.log(state.searchQuery);
   }
 
   return <div id="topbar">
@@ -30,7 +36,7 @@ export default function SearchView() {
       <Search placeholder="Search your topic..." 
       style={{ width: 200 }}
       enterButton
-      onChange={updateSearchString}
+      onChange={updateQuery}
       onSearch={handleSubmit}/>
     </form>
     <div className="button">

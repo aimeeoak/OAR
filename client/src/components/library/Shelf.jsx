@@ -25,7 +25,7 @@ export default function Shelf(props) {
       return <ArticleItem key={article.id} title={article.title} />
     })
     return ( <div>
-      <ProjectItem key={project.id} name={project.name} />
+      <ProjectItem key={project.id} name={project.name}/>
       {articles}
     </div>
     )

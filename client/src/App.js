@@ -7,6 +7,7 @@ import Navbar from "./components/navbar/Navbar"
 import Footer from "./components/footer/Footer"
 
 import Library from "./components/library/Library"
+import Search from "./components/search/Search"
 
 import egg from "./components/navbar/logo/egg.jpg"
 
@@ -29,6 +30,7 @@ function App() {
       <div>
         <div>
           <Library />
+          <Search />
         </div>
       <h1>{ message }</h1>
       {eggState && <img src={egg} alt="Egg" />}
