@@ -5,7 +5,7 @@ import ProjectItem from "./ProjectItem";
 
 import useLibData from '../../hooks/useLibData';
 
-import { getArticlesByProject } from "../../helpers/library_selectors";
+import getArticlesByProject from '../../helpers/library_selectors'
 
 export default function Shelf(props) {
 
@@ -18,14 +18,18 @@ export default function Shelf(props) {
     deleteArticle,
   } = useLibData();
   
-  const projectArticles = getArticlesByProject(state);
+ 
 
   const projects = state.projects.map(project => {
+    console.log("from shelf.jsx", state)
+    console.log("project.id", project.id)
+    const projectArticles = getArticlesByProject(state, project.id)
     const articles = projectArticles.map(article => {
-      return <ArticleItem key={article.id} title={article.title} />
+      return (<ArticleItem key={article.id} title={article.title} authors={article.authors} language={article.language} keywords={article.keywords} content={article.content} flagged={article.flagged}/>)
     })
+  
     return ( <div>
-      <ProjectItem key={project.id} name={project.name}/>
+      <ProjectItem key={project.id} name={project.name} description={project.description}/>
       {articles}
     </div>
     )

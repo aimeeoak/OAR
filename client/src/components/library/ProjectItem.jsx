@@ -7,8 +7,11 @@ export default function ProjectItem(props) {
   });
 
   return (
-    <li className={listClass} onClick={() => props.setProject(props.name)}>
+    <li className={listClass} onClick={() => props.setProject(props.name)}>  
       <h2>{props.name}</h2>
+      <h3>{props.description}</h3>
     </li>
   );
 }
+
+// maybe set project based on user.id? 
