@@ -85,7 +85,16 @@ export default function useAppData() {
 
   const callSearchAPI = function() {
     // make the call with all the stuff in state, then setState into results
-    console.log("test");
+    setState(prev => ({
+      ...prev,
+      results: [{
+        title: "Something that won't get me in trouble",
+        authors: "Aim Ee",
+        language: "stinky French",
+        keywords: "eh",
+        content: "something something Boromir"
+      }]
+    }))
   }
 
   const updateSearchParameter = function(category, name) {

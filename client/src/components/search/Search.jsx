@@ -49,18 +49,19 @@ export default function Search() {
   const articles = state.results.map(article => {
     articleTitles.push(article.title);
 
-    return {
+    return [{
       authors: article.authors,
       language: article.language,
       keywords: article.keywords,
       content: <a href={article.content} target="_blank">Link to Full Text</a>,
       save: <button onClick={() => clickThis("testerllea von test")}>save?</button>,
-    }
+    }]
   })
 
   const tableData = [];
 
   for (let i = 0; i < articleTitles.length; i++) {
+    console.log("test");
     tableData.push(
     <Panel header={articleTitles[i]} key={i}>
         <Table columns={columns} dataSource={articles[i]}>
@@ -70,9 +71,12 @@ export default function Search() {
   }
 
   return (
+    <>
+    <button onClick={() => callSearchAPI()}> Dummy search results </button>
     <Collapse accordion>
       {tableData}
     </Collapse>
+    </>
   )
 }
 
