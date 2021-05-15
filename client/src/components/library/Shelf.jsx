@@ -38,21 +38,31 @@ export default function Shelf(props) {
       title: 'Language',
       dataIndex: 'language',
       key: 'language'
-    },,
+    },
     {
       title: 'Keywords',
       dataIndex: 'keywords',
       key: 'keywords'
-    },,
+    },
     {
       title: 'Content',
       dataIndex: 'content',
       key: 'content'
-    },,
+    },
     {
-      title: 'Actions',
-      dataIndex: 'actions',
-      key: 'actions'
+      title: 'Move',
+      dataIndex: 'move',
+      key: 'move'
+    },
+    {
+      title: 'Flag',
+      dataIndex: 'flag',
+      key: 'flag'
+    },
+    {
+      title: 'Delete',
+      dataIndex: 'delete',
+      key: 'delete'
     }
   ]
 
@@ -69,6 +79,9 @@ export default function Shelf(props) {
       {articles}
     </div>
     ) */
+const clickThis = (button) => {
+  return console.log(button)
+}
 
     const articles = projectArticles.map(article => {
       return {
@@ -77,8 +90,10 @@ export default function Shelf(props) {
         authors: article.authors,
         language: article.language,
         keywords: article.keywords,
-        content: article.content,
-        actions: <button onClick={console.log("test")} />
+        content: <a href={article.content} target="_blank">Link to Full Text</a>,
+        move: <button onClick={() => clickThis("testerllea von test")}>mvoe?</button>,
+        flag: <button onClick={() => clickThis("testerllea von test")}>flage</button>,
+        delete: <button onClick={() => clickThis("testerllea von test")}>balate</button>
       }
     })
 
