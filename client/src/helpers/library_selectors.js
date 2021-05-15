@@ -7,11 +7,28 @@
 //   return [];
 // }
 
-export function getArticlesByProject(state) {
-  const articlesSortedByProject = state.projects.map(project => {
-    const articlesByProject = state.articles.filter(article => article.project === project.id);
-    return articlesByProject;
-  });
+
+// need to feed this project id and the state.articles object to select relavent articles 
+// export function getArticlesByProject(state) {
+//   // const articlesSortedByProject = state.projects.map(project => {
+//     const articlesByProject = state.articles.filter(article => article.project === state.projects.id);
+//     console.log("articles by project, line 13", articlesByProject)
+//     return articlesByProject;
+//     // });
+    
+//     // return articlesSortedByProject;
+//   }
   
-  return articlesSortedByProject;
-}
+  
+  // need to feed this project id and the state.articles object to select relavent articles 
+
+  const getArticlesByProject = (state, id) => {
+  const foundArticles = state.articles.filter((article) => article.project_id === id)
+  
+  console.log("found articles", foundArticles)
+ 
+  return foundArticles
+ }
+
+ export default getArticlesByProject; 
+ 

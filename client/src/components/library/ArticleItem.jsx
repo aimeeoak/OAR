@@ -7,8 +7,17 @@ export default function ArticleItem(props) {
   });
 
   return (
-    <li className={listClass} onClick={() => props.setArticle(props.name)}>
-      <h2>{props.name}</h2>
+    <ul>
+      <li className={listClass} onClick={() => props.setArticle(props.name)}>
+      <h3>{props.title}</h3>
     </li>
+    <li>
+      <h5>By: {props.authors}</h5> 
+      <h5>Language: {props.language}</h5> 
+      <h5>Keywords: {props.keywords}</h5> 
+      <h5><a href = {props.content} target="_blank"> Link to Full Text</a></h5> 
+    </li>
+    </ul>
   );
+
 }
