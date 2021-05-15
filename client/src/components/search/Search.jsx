@@ -1,41 +1,79 @@
 import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
 //import './index.css';
-import { Table } from 'antd';
-
+import { Table, Collapse } from 'antd';
 import useAppData from "../../hooks/useAppData";
 import Checkbox from 'antd/lib/checkbox/Checkbox';
 
-const columns = [{
-  title: 'Name',
-  dataIndex: 'name'
-}, {
-  title: 'Age',
-  dataIndex: 'age',
-}, {
-  title: 'Address',
-  dataIndex: 'address',
-}];
-
-const data = [{
-  key: '1',
-  name: 'John Brown',
-  age: 32,
-  address: 'New York No. 1 Lake Park',
-} ];
+const { Panel } = Collapse;
 
 export default function Search() {
   const { state, updateSearchParameter, 
     callSearchAPI, updateQuery, 
     saveArticles, selectArticleForSaving } = useAppData();
 
+  const columns = [
+    {
+      title: 'Authors',
+      dataIndex: 'authors',
+      key: 'authors'
+    },
+    {
+      title: 'Language',
+      dataIndex: 'language',
+      key: 'language'
+    },
+    {
+      title: 'Keywords',
+      dataIndex: 'keywords',
+      key: 'keywords'
+    },
+    {
+      title: 'Content',
+      dataIndex: 'content',
+      key: 'content'
+    },
+    {
+      title: 'Save',
+      dataIndex: 'save',
+      key: 'save'
+    },
+  ]
+
+  const articleTitles = [];
+
+  const clickThis = (button) => {
+    return console.log(button)
+  }
+
+  const articles = state.results.map(article => {
+    articleTitles.push(article.title);
+
+    return {
+      authors: article.authors,
+      language: article.language,
+      keywords: article.keywords,
+      content: <a href={article.content} target="_blank">Link to Full Text</a>,
+      save: <button onClick={() => clickThis("testerllea von test")}>save?</button>,
+    }
+  })
+
+  const tableData = [];
+
+  for (let i = 0; i < articleTitles.length; i++) {
+    tableData.push(
+    <Panel header={articleTitles[i]} key={i}>
+        <Table columns={columns} dataSource={articles[i]}>
+        </Table>
+    </Panel>
+    )
+  }
+
   return (
-    <Table
-      rowSelection={{type: Checkbox, onSelect: selectArticleForSaving}}
-      columns={columns}
-      dataSource={data}
-    />
-  );
+    <Collapse accordion>
+      {tableData}
+    </Collapse>
+  )
 }
 
 /* {

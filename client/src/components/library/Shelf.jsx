@@ -79,9 +79,9 @@ export default function Shelf(props) {
       {articles}
     </div>
     ) */
-const clickThis = (button) => {
-  return console.log(button)
-}
+    const clickThis = (button) => {
+      return console.log(button)
+    }
 
     const articles = projectArticles.map(article => {
       return {
@@ -99,16 +99,14 @@ const clickThis = (button) => {
 
     return (
       <Panel header={project.name} key={project.id}>
-        <p>
           <Table columns={columns} dataSource={articles}>
           </Table>
-        </p>
       </Panel>
     )
   })
 
   return (
-    <Collapse>
+    <Collapse accordion>
       {projects}
     </Collapse>
   )
