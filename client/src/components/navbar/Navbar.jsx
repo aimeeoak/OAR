@@ -13,6 +13,7 @@ export default function SearchView() {
   const { state, updateSearchParameter, 
     callSearchAPI, updateQuery, 
     saveArticles, selectArticleForSaving } = useAppData();
+    const [darkMode, setDarkMode] = useState(false)
 
   /* const [search, setSearch] = useState("");
 
@@ -40,9 +41,19 @@ export default function SearchView() {
       onSearch={handleSubmit}/>
     </form>
     <div className="button">
-        <Button>Support</Button>
-        <Button>Log In</Button>
-        <Button className="sign-up" shape="round">Sign Up</Button>
-      </div>
+      <Button>Support</Button>
+      <Button>Log In</Button>
+      <Button className="sign-up" shape="round">Sign Up</Button>
+    </div>
+    <div className={`App ${darkMode && "dark-mode"}`}>
+      <label>
+        <input
+          type="checkbox"
+          checked={darkMode}
+          onChange={() => setDarkMode((darkMode) => !darkMode)}
+          />
+          Dark Mode
+      </label>
+    </div>
   </div>
 }

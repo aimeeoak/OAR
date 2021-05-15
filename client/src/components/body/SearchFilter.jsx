@@ -24,17 +24,17 @@ export default function SearchFilter() {
   return (
     <Menu className="search-filterbox" mode="inline" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256 }}>
       <SubMenu key="sub1" icon={<MailOutlined />} title="Search Filters">
-        <Menu.Item key="1"><Checkbox /> Journals </Menu.Item>
-        <Menu.Item key="2"><Checkbox /> Books </Menu.Item>
-        <Menu.Item key="3"><Checkbox /> Newspaper Articles </Menu.Item>
-        <Menu.Item key="4"><Checkbox /> Book Reviews </Menu.Item>
-        <Menu.Item key="5"><Checkbox /> Dissertations </Menu.Item>
+        <Menu.Item key="1"><Checkbox> Journals </Checkbox></Menu.Item>
+        <Menu.Item key="2"><Checkbox> Books </Checkbox></Menu.Item>
+        <Menu.Item key="3"><Checkbox> Newspaper Articles </Checkbox></Menu.Item>
+        <Menu.Item key="4"><Checkbox> Book Reviews </Checkbox></Menu.Item>
+        <Menu.Item key="5"><Checkbox> Dissertations </Checkbox></Menu.Item>
       </SubMenu>
       <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Subjects">
-        <Menu.Item key="6"><Checkbox /> Math</Menu.Item>
-        <Menu.Item key="7"><Checkbox /> Nerd Stuff</Menu.Item>
-        <Menu.Item key="8"><Checkbox /> Applied Nuclear Thermodynamics</Menu.Item>
-        <Menu.Item key="9"><Checkbox /> Art????</Menu.Item>
+        <Menu.Item key="6"><Checkbox> Math</Checkbox></Menu.Item>
+        <Menu.Item key="7"><Checkbox> Nerd Stuff</Checkbox></Menu.Item>
+        <Menu.Item key="8"><Checkbox> Applied Nuclear Thermodynamics</Checkbox></Menu.Item>
+        <Menu.Item key="9"><Checkbox> Art????</Checkbox></Menu.Item>
       </SubMenu>
       <SubMenu key="sub3" icon={<SettingOutlined />} title="Publication Date Range">
         <Menu.Item key="10">
@@ -49,14 +49,14 @@ export default function SearchFilter() {
         </Menu.Item>
       </SubMenu>
       <SubMenu key="sub4" icon={<SettingOutlined />} title="Source">
-        <Menu.Item key="12"><Checkbox /> babushka</Menu.Item>
+        <Menu.Item key="12"><Checkbox> babushka</Checkbox></Menu.Item>
       </SubMenu>
       <SubMenu key="sub5" icon={<SettingOutlined />} title="Languages">
-        <Menu.Item key="13"><Checkbox /> Deutsch </Menu.Item>
-        <Menu.Item key="14"><Checkbox /> Québécois French </Menu.Item>
-        <Menu.Item key="15"><Checkbox /> Swahili </Menu.Item>
-        <Menu.Item key="16"><Checkbox /> Eliksni </Menu.Item>
-        <Menu.Item key="17"><Checkbox /> ...English </Menu.Item>
+        <Menu.Item key="13"><Checkbox> Deutsch </Checkbox></Menu.Item>
+        <Menu.Item key="14"><Checkbox> Québécois French </Checkbox></Menu.Item>
+        <Menu.Item key="15"><Checkbox> Swahili </Checkbox></Menu.Item>
+        <Menu.Item key="16"><Checkbox> Eliksni </Checkbox></Menu.Item>
+        <Menu.Item key="17"><Checkbox> ...English </Checkbox></Menu.Item>
       </SubMenu>
       <Menu.Item key="18"><Button className="search-submit">Submit</Button></Menu.Item>
     </Menu>

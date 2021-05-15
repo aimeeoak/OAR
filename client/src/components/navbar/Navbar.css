@@ -14,10 +14,12 @@
     height: 200px;
     display: flex;
     float: left;
+    margin: 10px;
 }
 
 .buttons {
     display: flex;
+    padding: 10px 15px;
     flex-direction: row;
     justify-content: right;
 }
@@ -27,3 +29,10 @@
     font-weight: 700;
     background-color: #52899b;
 }
+
+.dark-mode {
+    display: flex;
+    flex-direction: row;
+    background: #1f363d;
+    color: white;
+  }
