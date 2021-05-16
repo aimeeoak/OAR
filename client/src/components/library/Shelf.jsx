@@ -8,15 +8,17 @@ import useLibData from '../../hooks/useLibData';
 import getArticlesByProject from '../../helpers/library_selectors'
 import Checkbox from 'antd/lib/checkbox/Checkbox';
 
-import { Table, Collapse } from 'antd';
+import { Table, Collapse, Select } from 'antd';
 
 const { Panel } = Collapse;
+const { Option } = Select;
 
 export default function Shelf(props) {
 
   const {
     state, 
-    selectArticle, 
+    selectArticle,
+    selectProject, 
     closeArticle, 
     flagArticle, 
     moveArticle, 
@@ -66,14 +68,14 @@ export default function Shelf(props) {
     }
   ]
 
+  const selectOptions = state.projects.map(project => {
+    return <Option value={project.name}>{project.name}</Option>
+  })
+
   const projects = state.projects.map(project => {
     // console.log("from shelf.jsx", state)
     // console.log("project.id", project.id)
     const projectArticles = getArticlesByProject(state, project.id)
-  
-const clickThis = (button) => {
-  return console.log(button)
-}
 
     const articles = projectArticles.map(article => {
       return {
@@ -83,9 +85,14 @@ const clickThis = (button) => {
         language: article.language,
         keywords: article.keywords,
         content: <a href={article.content} target="_blank">Link to Full Text</a>,
-        move: <button onClick={() => clickThis("testerllea von test")}>mvoe?</button>,
+        move: <>
+        <Select defaultValue={project.name} onChange={selectProject}>
+          {selectOptions}
+        </Select>
+        <button onClick={() => moveArticle(article.id)}>mvoe?</button>
+        </>,
         flag: <button onClick={() => flagArticle(article.id)}>flage</button>,
-        delete: <button onClick={() => clickThis("testerllea von test")}>balate</button>
+        delete: <button onClick={() => deleteArticle(article.id)}>balate</button>
       }
     })
 

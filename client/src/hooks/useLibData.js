@@ -27,7 +27,7 @@ export default function useLibData() {
     });
   }, []);
 
-  const selectArticle = function (id) {
+  const selectArticle = function(id) {
     return axios.get(`/articles/${id}`).then((res) => {
       setState((prev) => ({
         ...prev,
@@ -36,68 +36,69 @@ export default function useLibData() {
     });
   };
 
-  const closeArticle = function () {
+  const closeArticle = function() {
     setState({ ...state, article: null });
   };
 
-  const flagArticle = function (id) {
-    const flagStatus = state.articles[id].flagged;
-    console.log("flagStatus", flagStatus);
-    console.log("!flagStatus", !flagStatus);
+  const selectProject = function(name) {
+    const projectOption = state.projects.find(project => project.name === name);
+    console.log(projectOption)
+    setState(prev => ({
+      ...prev,
+      project: projectOption
+    }))
+  }
 
-    const flagged = {
-      ...state.articles[id],
-      flagged: !flagStatus,
-    };
+  const flagArticle = function(id) {
+    const articleFind = state.articles.find(article => article.id === id);
+    const flagStatus = articleFind.flagged;
+    articleFind.flagged = !flagStatus
 
-    console.log("flagged", flagged)
-
-    // const articles = [...state.articles];
-  
-    const updateFlag = (articles) =>{
-      for (let article of articles) {
-        if (article.id === id){
-          article = flagged
-        }
+    const articlesCopy = [...state.articles];
+    for (const article of articlesCopy) {
+      if (article.id === id) {
+        article.flagged = !flagStatus;
       }
-      return articles
     }
-console.log(updateFlag(state.articles))
-      // return x;
-    
-    // console.log("will this work?", flagThis);
-    // console.log("state from useLibData", state)
-    // console.log("state.articles[id]", state.articles[id]);
-    // console.log("artucle state from useLibData 51", state.article)
-    console.log("id from useLibData 52", id);
 
-    return axios.put(`/articles/${id}`, flagged )
-    .then((res) => {
-      console.log("flagged!!");
-      console.log("res.data.flagged", res.data.flagged);
-      console.log("res.data", res.data)
-      const updatedArticles = updateFlag(state.articles)
+    return axios.put(`/articles/${id}`, articleFind )
+    .then(res => {
+      console.log(res.data.flagged);
       setState((prev) => ({
         ...prev,
-        articles: updatedArticles,
-
+        articles: [...articlesCopy]
       }));
-      console.log("state from line 71", state.articles[id]);
     });
   };
 
-  const moveArticle = function (article_id, project_id) {
-    const articleCopy = {
-      ...state.article,
-      project: project_id,
-    };
-    return axios.put(`/articles/${article_id}`, articleCopy);
+  const moveArticle = function(id) {
+    const articleFind = state.articles.find(article => article.id === id);
+    articleFind.project = state.project.id;
+    articleFind.project_id = state.project.id;
+
+    const articlesCopy = [...state.articles];
+    for (const article of articlesCopy) {
+      if (article.id === id) {
+        article.project = state.project.id;
+        article.project_id = state.project.id;
+      }
+    }
+
+    return axios.put(`/articles/${id}`, articleFind)
+    .then(res => {
+      console.log(res.data);
+      setState((prev) => ({
+        ...prev,
+        articles: [...articlesCopy]
+      }));
+    });
   };
 
-  const deleteArticle = function (id) {
+  const deleteArticle = function(id) {
+    const articlesCopy = state.articles.filter(article => article.id !== id)
     setState((prev) => ({
       ...prev,
-      article: null,
+      articles: [...articlesCopy]
     }));
     return axios.delete(`/articles/${id}`);
   };
@@ -105,6 +106,7 @@ console.log(updateFlag(state.articles))
   return {
     state,
     selectArticle,
+    selectProject,
     closeArticle,
     flagArticle,
     moveArticle,
