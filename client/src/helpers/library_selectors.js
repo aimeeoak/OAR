@@ -24,9 +24,6 @@
 
   const getArticlesByProject = (state, id) => {
   const foundArticles = state.articles.filter((article) => article.project_id === id)
-  
-  console.log("found articles", foundArticles)
- 
   return foundArticles
  }
 

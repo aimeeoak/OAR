@@ -67,18 +67,10 @@ export default function Shelf(props) {
   ]
 
   const projects = state.projects.map(project => {
-    console.log("from shelf.jsx", state)
-    console.log("project.id", project.id)
+    // console.log("from shelf.jsx", state)
+    // console.log("project.id", project.id)
     const projectArticles = getArticlesByProject(state, project.id)
-    /* const articles = projectArticles.map(article => {
-      return (<ArticleItem key={article.id} title={article.title} authors={article.authors} language={article.language} keywords={article.keywords} content={article.content} flagged={article.flagged}/>)
-    }) 
-
-    return ( <div>
-      <ProjectItem key={project.id} name={project.name} description={project.description}/>
-      {articles}
-    </div>
-    ) */
+  
 const clickThis = (button) => {
   return console.log(button)
 }
@@ -92,17 +84,15 @@ const clickThis = (button) => {
         keywords: article.keywords,
         content: <a href={article.content} target="_blank">Link to Full Text</a>,
         move: <button onClick={() => clickThis("testerllea von test")}>mvoe?</button>,
-        flag: <button onClick={() => clickThis("testerllea von test")}>flage</button>,
+        flag: <button onClick={() => flagArticle(article.id)}>flage</button>,
         delete: <button onClick={() => clickThis("testerllea von test")}>balate</button>
       }
     })
 
     return (
       <Panel header={project.name} key={project.id}>
-        <p>
           <Table columns={columns} dataSource={articles}>
           </Table>
-        </p>
       </Panel>
     )
   })
