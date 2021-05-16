@@ -44,8 +44,7 @@ export default function SearchView() {
       <Button>Support</Button>
       <Button>Log In</Button>
       <Button className="sign-up" shape="round">Sign Up</Button>
-    </div>
-    <div className={`App ${darkMode && "dark-mode"}`}>
+      <div className={`App ${darkMode && "dark-mode"}`}>
       <label>
         <input
           type="checkbox"
@@ -54,6 +53,7 @@ export default function SearchView() {
           />
           Dark Mode
       </label>
+    </div>
     </div>
   </div>
 }
