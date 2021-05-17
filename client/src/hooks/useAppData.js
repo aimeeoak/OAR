@@ -7,6 +7,7 @@ export default function useAppData() {
     results: [],
     resultsToSave: [],
     projects: [],
+    projectsToSaveTo: [],
     searchQuery: null,
     subject: {
       math: true,
@@ -34,7 +35,8 @@ export default function useAppData() {
       day: "20",
       year: "2021"
     },
-    tags: ["Nerd Stuff", "Cool Stuff"]
+    tags: ["Nerd Stuff", "Cool Stuff"],
+    tagsToAdd: []
   })
 
   useEffect(() => {
@@ -68,6 +70,48 @@ export default function useAppData() {
       setState(prev => ({
         ...prev,
         resultsToSave: [ ...newSaveList ]
+      }))
+    }
+  }
+
+  const selectProjectsToSaveTo = function(project_id) {
+    const project = state.projects.find(project => project.id === project_id)
+    if (state.projectsToSaveTo.length === 0) {
+      setState(prev => ({
+        ...prev,
+        projectsToSaveTo: [ project ]
+      }))
+      return project_id;
+    }
+    const checkForItem = state.projectsToSaveTo.find(project => project.id === project_id)
+    if (!checkForItem) {
+      const projectsSave = [ ...state.projectsToSaveTo, project ]
+      setState(prev => ({
+        ...prev,
+        projectsToSaveTo: [ ...projectsSave ]
+      }))
+    } else {
+      const newSaveList = state.projectsToSaveTo.filter(project => project.id !== project_id)
+      setState(prev => ({
+        ...prev,
+        projectsToSaveTo: [ ...newSaveList ]
+      }))
+    }
+  }
+
+  const selectTagsToAdd = function(tag) {
+    if (state.tagsToAdd.includes(tag)) {
+      const newTagList = state.tagsToAdd.filter(tagCheck => tag !== tagCheck)
+      setState(prev => ({
+        ...prev,
+        tagsToAdd: [ ...newTagList ]
+      }))
+    } else {
+      const newTagList = [ ...state.tagsToAdd ]
+      newTagList.push(tag)
+      setState(prev => ({
+        ...prev,
+        tagsToAdd: [ ...newTagList ]
       }))
     }
   }
@@ -161,5 +205,5 @@ export default function useAppData() {
     }
   }
 
-  return { state, updateStartDateParameter, updateEndDateParameter, updateSearchParameter, callSearchAPI, updateQuery, saveArticles, selectArticleForSaving }
+  return { state, selectTagsToAdd, selectProjectsToSaveTo, updateStartDateParameter, updateEndDateParameter, updateSearchParameter, callSearchAPI, updateQuery, saveArticles, selectArticleForSaving }
 }

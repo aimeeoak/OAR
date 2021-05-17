@@ -23,25 +23,22 @@ export default function LibraryFilter() {
     }
   };
 
-  const {state, updateSearchParameter, callSearchAPI, updateQuery, saveArticles, selectArticleForSaving} = useAppData();
+  const {state, selectTagsToAdd, selectProjectsToSaveTo, updateSearchParameter, callSearchAPI, updateQuery, saveArticles, selectArticleForSaving} = useAppData();
 
-  let count = 0;
 
   const projectItems = state.projects.map(project => {
-    count++;
     return (
-      <Menu.Item key={count}><Checkbox> {project.name} </Checkbox></Menu.Item>
+      <Menu.Item key={project.id}><Checkbox onChange={() => selectProjectsToSaveTo(project.id)}> {project.name} </Checkbox></Menu.Item>
     )
   })
 
   const tagItems = state.tags.map(tag => {
-    count++;
     return (
-      <Menu.Item key={count}><Checkbox> {tag} </Checkbox></Menu.Item>
+      <Menu.Item ><Checkbox onChange={() => selectTagsToAdd(tag)}> {tag} </Checkbox></Menu.Item>
     )
   })
 
-  const submitItem = <Menu.Item key={count}><Button className="library-submit">Submit</Button></Menu.Item>
+  const submitItem = <Menu.Item><Button className="library-submit">Submit</Button></Menu.Item>
 
   return (
     <Menu className="library-filterbox" mode="inline" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256 }}>
