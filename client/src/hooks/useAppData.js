@@ -9,8 +9,8 @@ export default function useAppData() {
     projects: [],
     searchQuery: null,
     subject: {
-      math: false,
-      nautical_stuff: false
+      math: true,
+      nautical_stuff: true
     },
     language: {
       english: true,
@@ -18,14 +18,22 @@ export default function useAppData() {
     },
     sourceAPI: {
       serpAPI: true,
-      coreAPI: false
+      coreAPI: true
     },
     sourceType: {
       journal: true,
       book: true
     },
-    startDate: null,
-    endDate: null,
+    startDate: {
+      month: "Jan",
+      day: "01",
+      year: "1900"
+    },
+    endDate: {
+      month: "May",
+      day: "20",
+      year: "2021"
+    },
     tags: ["Nerd Stuff", "Cool Stuff"]
   })
 
@@ -90,14 +98,68 @@ export default function useAppData() {
   }
 
   const updateSearchParameter = function(category, name) {
-    const currentStatus = state[category][name]
+    const categoryToChange = { ...state[category] };
+    categoryToChange[name] = state[category][name] === true ? false : true
     setState(prev => ({
       ...prev,
-      category: {
-        name: !currentStatus
+      [category]: {
+        ...categoryToChange
       }
     }))
+    console.log(categoryToChange[name])
   }
 
-  return { state, updateSearchParameter, callSearchAPI, updateQuery, saveArticles, selectArticleForSaving }
+  const updateStartDateParameter = function(date, dateString) {
+    if (dateString) {
+      console.log(dateString);
+      const month = dateString.substring(0, 3);
+      const day = dateString.substring(4, 6);
+      const year = dateString.substring(7, 11);
+      setState(prev => ({
+        ...prev,
+        startDate: {
+          month,
+          day,
+          year
+        }
+      }))
+    } else {
+      setState(prev => ({
+        ...prev,
+        startDate: {
+          month: "Jan",
+          day: "01",
+          year: "1900"
+        }
+      }))
+    }
+  }
+
+  const updateEndDateParameter = function(date, dateString) {
+    if (dateString) {
+      console.log(dateString);
+      const month = dateString.substring(0, 3);
+      const day = dateString.substring(4, 6);
+      const year = dateString.substring(7, 11);
+      setState(prev => ({
+        ...prev,
+        endDate: {
+          month,
+          day,
+          year
+        }
+      }))
+    } else {
+      setState(prev => ({
+        ...prev,
+        endDate: {
+          month: "May",
+          day: "20",
+          year: "2021"
+        }
+      }))
+    }
+  }
+
+  return { state, updateStartDateParameter, updateEndDateParameter, updateSearchParameter, callSearchAPI, updateQuery, saveArticles, selectArticleForSaving }
 }
