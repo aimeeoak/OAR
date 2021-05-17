@@ -25,7 +25,8 @@ export default function useAppData() {
       book: true
     },
     startDate: null,
-    endDate: null
+    endDate: null,
+    tags: ["Nerd Stuff", "Cool Stuff"]
   })
 
   useEffect(() => {

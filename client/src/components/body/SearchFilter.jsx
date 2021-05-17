@@ -1,6 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import './SearchFilter.css';
+import moment from 'moment';
 
 import { Menu, Checkbox, DatePicker, Space, Button } from 'antd';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
@@ -21,6 +22,17 @@ export default function SearchFilter() {
     }
   };
 
+  //const logDate = () => console.log(moment().format('dddd'));
+  const logDate = (date, dateString) => {
+    if (dateString) {
+      const month = dateString.substr(5, 7);
+      const day = dateString.substr(9, 10);
+      const year = dateString.substr(12, 15);
+      console.log(dateString)
+      console.log(`${month} ${day} ${year}`)
+    }
+  }
+
   return (
     <Menu className="search-filterbox" mode="inline" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256 }}>
       <SubMenu key="sub1" icon={<MailOutlined />} title="Search Filters">
@@ -39,7 +51,7 @@ export default function SearchFilter() {
       <SubMenu key="sub3" icon={<SettingOutlined />} title="Publication Date Range">
         <Menu.Item key="10">
           <Space direction="vertical" size={12}>
-            <DatePicker placeholder="Start Date"/>
+            <DatePicker placeholder="Start Date" format="MMMM-DD-YYYY" onChange={logDate}/>
           </Space>
         </Menu.Item>
         <Menu.Item key="11"> 
@@ -58,7 +70,6 @@ export default function SearchFilter() {
         <Menu.Item key="16"><Checkbox> Eliksni </Checkbox></Menu.Item>
         <Menu.Item key="17"><Checkbox> ...English </Checkbox></Menu.Item>
       </SubMenu>
-      <Menu.Item key="18"><Button className="search-submit">Submit</Button></Menu.Item>
     </Menu>
   );
 };
