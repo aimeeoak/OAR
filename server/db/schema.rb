@@ -10,27 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_12_221736) do
-
-  # create_table "api_articles", force: :cascade do |t|
-  #   t.datetime "created_at", precision: 6, null: false
-  #   t.datetime "updated_at", precision: 6, null: false
-  # end
-
-  # create_table "api_projects", force: :cascade do |t|
-  #   t.datetime "created_at", precision: 6, null: false
-  #   t.datetime "updated_at", precision: 6, null: false
-  # end
-
-  # create_table "api_searches", force: :cascade do |t|
-  #   t.datetime "created_at", precision: 6, null: false
-  #   t.datetime "updated_at", precision: 6, null: false
-  # end
-
-  # create_table "api_users", force: :cascade do |t|
-  #   t.datetime "created_at", precision: 6, null: false
-  #   t.datetime "updated_at", precision: 6, null: false
-  # end
+ActiveRecord::Schema.define(version: 2021_05_18_222134) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -42,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_05_12_221736) do
     t.integer "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "description"
     t.index ["project_id"], name: "index_articles_on_project_id"
   end
 
