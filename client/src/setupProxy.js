@@ -24,8 +24,8 @@ module.exports = function(app) {
     })
   );
   // this app.use is for the future api call :) 
-  // app.use("/articles", createProxyMiddleware({
-  //   target: ['serpapi'],
+  // app.use( "/search", createProxyMiddleware({
+  //   target: "https://serpapi.com/search.json?",
   //   changeOrigin: true
   //   })
   // );

@@ -22,24 +22,17 @@ export default function SearchView() {
     setSearch(searchString);
   } */
 
-  const handleSubmit = (event) => {
+  /* const handleSubmit = (event) => {
     if (state.searchQuery === "") {
       return
     }
     callSearchAPI();
   }
-
+ */
   return <div id="topbar">
     <div>
       <img src={logo} class="logo" alt="OAR: Open Academic Research - research without paywalls Logo" />
     </div>
-    <form onSubmit={event => event.preventDefault()}>
-      <Search placeholder="Search your topic..." 
-      style={{ width: 200 }}
-      enterButton
-      onChange={updateQuery}
-      onSearch={handleSubmit}/>
-    </form>
     <div className="button">
       <Button>Support</Button>
       <Button>Log In</Button>

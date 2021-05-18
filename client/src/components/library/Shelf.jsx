@@ -95,10 +95,10 @@ export default function Shelf(props) {
         <Select defaultValue={project.name} onChange={selectProject}>
           {selectOptions}
         </Select>
-        <button onClick={() => moveArticle(article.id)}>mvoe?</button>
+        <button onClick={() => moveArticle(article.id)}>move</button>
         </>,
-        flag: <button onClick={() => flagArticle(article.id)}>flage</button>,
-        delete: <button onClick={() => deleteArticle(article.id)}>balate</button>
+        flag: <button onClick={() => flagArticle(article.id)}>flag</button>,
+        delete: <button onClick={() => deleteArticle(article.id)}>delete</button>
       }
     })
 

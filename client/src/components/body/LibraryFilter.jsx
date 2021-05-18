@@ -38,7 +38,7 @@ export default function LibraryFilter() {
     )
   })
 
-  const submitItem = <Menu.Item><Button className="library-submit">Submit</Button></Menu.Item>
+  const submitItem = <Menu.Item><Button onClick={saveArticles} className="library-submit">Submit</Button></Menu.Item>
 
   return (
     <Menu className="library-filterbox" mode="inline" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256 }}>

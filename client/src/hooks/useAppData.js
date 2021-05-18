@@ -57,37 +57,82 @@ export default function useAppData() {
       })
   }, []);
 
-
   const callSearchAPI = function() {
-    const coolAPIKey = process.env
+    const coolAPIKey = process.env.REACT_APP_SERP_API
     const search = new SerpApi.GoogleSearch(coolAPIKey)
     const params = {
       engine: "google_scholar",
       q: state.searchQuery
     };
     const callback = (data) => {
-      console.log(data["organic_results"])
+      //console.log(data["organic_results"])
+      const organicResults = data["organic_results"];
+      const gmoResults = organicResults.filter((x) =>  x.resources ? x : null)
+      // console.log("refined results", gmoResults)
+      //tite, authors, language, keywords, content, project_id
+/*      const realResults = gmoResults.map((x) => {
+        return {
+          key: gmoResults.indexOf(x),
+          title: x.title,
+          author: x.publication_info.summary,
+          snippet: x.snippet,
+          language: "English",
+          content: x.resources[0].link,
+        }
+      }) */
+      // console.log(gmoResults)
+      // console.log(realResults)
+      setState(prev => ({
+        ...prev,
+        results: [ ...gmoResults ]
+      }))
+      //title -- gmoResults.title
+      //author -- gmoResults.publication_info.author
+      // language-- on selection/search?
+      // keywords -- user adds 
+      // content-- gmoResults.reources.link
+      //project_id --user selection 
+
+
     };
     search.json(params, callback)
+    /* axios.get("/api/search", search )
+    .then((res) => {
+      console.log("response", res)
+    }) */
+
+    //Vahid, our cool mentor-- add params to the header of our request? 
+    // 
+   /*  const query = state.searchQuery
+    axios.get(url)
+    .then(res => {
+      console.log(res)
+      console.log(res.headers)
+      console.log(res.data)
+    }) */
   }
 
-  const selectArticleForSaving = function(id) {
+  // console.log(state.results);
+
+  const selectArticleForSaving = function(title) {
+    console.log("test")
+    const article = state.results.find(result => result.title === title)
     if (state.resultsToSave.length === 0) {
       setState(prev => ({
         ...prev,
-        resultsToSave: [ state.results[id] ]
+        resultsToSave: [ article ]
       }))
-      return id;
     }
-    const checkForItem = state.resultsToSave.find(result => result.id === id)
+
+    const checkForItem = state.resultsToSave.find(result => result.title === title)
     if (!checkForItem) {
-      const resultsSave = [ ...state.resultsToSave, state.results[id] ]
+      const resultsSave = [ ...state.resultsToSave, article ]
       setState(prev => ({
         ...prev,
         resultsToSave: [ ...resultsSave ]
       }))
     } else {
-      const newSaveList = state.resultsToSave.filter(result => (!result.id === id))
+      const newSaveList = state.resultsToSave.filter(result => (!result.title === title))
       setState(prev => ({
         ...prev,
         resultsToSave: [ ...newSaveList ]
@@ -96,6 +141,7 @@ export default function useAppData() {
   }
 
   const selectProjectsToSaveTo = function(project_id) {
+    console.log("test")
     const project = state.projects.find(project => project.id === project_id)
     if (state.projectsToSaveTo.length === 0) {
       setState(prev => ({
@@ -120,8 +166,6 @@ export default function useAppData() {
     }
   }
 
-  console.log(state.projectsToSaveTo);
-
   const selectTagsToAdd = function(tag) {
     if (state.tagsToAdd.includes(tag)) {
       const newTagList = state.tagsToAdd.filter(tagCheck => tag !== tagCheck)
@@ -129,7 +173,6 @@ export default function useAppData() {
         ...prev,
         tagsToAdd: [ ...newTagList ]
       }))
-      console.log(newTagList);
     } else {
       const newTagList = [ ...state.tagsToAdd ]
       newTagList.push(tag)
@@ -137,19 +180,29 @@ export default function useAppData() {
         ...prev,
         tagsToAdd: [ ...newTagList ]
       }))
-      console.log(newTagList);
     }
   }
 
-  const saveArticles = function(project_id) {
-    const articlesToSave = state.resultsToSave.map(result => {
-      return {
-        ...result,
-        projectIDwhatIstheKeyagain: project_id
+  const saveArticles = function() {
+    console.log(state.projectsToSaveTo)
+    console.log(state.resultsToSave)
+    if (state.projectsToSaveTo.length === 0) {
+      return
+    }
+    const saveByProject = state.projectsToSaveTo.map(project => {
+      const articlesToSave = state.resultsToSave.map(result => {
+        return {
+          ...result,
+          project_id: project.id
+        }
+      });
+      return articlesToSave
+    })
+    for (const project of saveByProject) {
+      for (const article of project) {
+        console.log("test")
+        axios.post('/articles', article); // find a better way to do this
       }
-    });
-    for (const article of articlesToSave) {
-      axios.post('/articles', article); // find a better way to do this
     }
   }
 
@@ -170,7 +223,6 @@ export default function useAppData() {
         ...categoryToChange
       }
     }))
-    console.log(categoryToChange[name])
   }
 
   const updateStartDateParameter = function(date, dateString) {
@@ -224,9 +276,6 @@ export default function useAppData() {
       }))
     }
   }
-
-  console.log(state.startDate);
-  console.log(state.endDate);
 
   return { state, selectTagsToAdd, selectProjectsToSaveTo, updateStartDateParameter, updateEndDateParameter, updateSearchParameter, callSearchAPI, updateQuery, saveArticles, selectArticleForSaving }
 }
