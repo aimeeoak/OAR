@@ -1,5 +1,12 @@
+import dotenv from 'dotenv';
+
 import { useState, useEffect } from "react";
 import axios from "axios";
+
+// const SerpApi = require('google-search-results-nodejs')
+
+import SerpApi from 'google-search-results-nodejs'
+dotenv.config();
 
 export default function useAppData() {
 
@@ -50,6 +57,20 @@ export default function useAppData() {
       })
   }, []);
 
+
+  const callSearchAPI = function() {
+    const coolAPIKey = process.env
+    const search = new SerpApi.GoogleSearch(coolAPIKey)
+    const params = {
+      engine: "google_scholar",
+      q: state.searchQuery
+    };
+    const callback = (data) => {
+      console.log(data["organic_results"])
+    };
+    search.json(params, callback)
+  }
+
   const selectArticleForSaving = function(id) {
     if (state.resultsToSave.length === 0) {
       setState(prev => ({
@@ -99,6 +120,8 @@ export default function useAppData() {
     }
   }
 
+  console.log(state.projectsToSaveTo);
+
   const selectTagsToAdd = function(tag) {
     if (state.tagsToAdd.includes(tag)) {
       const newTagList = state.tagsToAdd.filter(tagCheck => tag !== tagCheck)
@@ -106,6 +129,7 @@ export default function useAppData() {
         ...prev,
         tagsToAdd: [ ...newTagList ]
       }))
+      console.log(newTagList);
     } else {
       const newTagList = [ ...state.tagsToAdd ]
       newTagList.push(tag)
@@ -113,6 +137,7 @@ export default function useAppData() {
         ...prev,
         tagsToAdd: [ ...newTagList ]
       }))
+      console.log(newTagList);
     }
   }
 
@@ -134,11 +159,6 @@ export default function useAppData() {
       ...prev,
       searchQuery: searchString
     }))
-  }
-
-  const callSearchAPI = function() {
-    // make the call with all the stuff in state, then setState into results
-    console.log("test");
   }
 
   const updateSearchParameter = function(category, name) {
@@ -204,6 +224,9 @@ export default function useAppData() {
       }))
     }
   }
+
+  console.log(state.startDate);
+  console.log(state.endDate);
 
   return { state, selectTagsToAdd, selectProjectsToSaveTo, updateStartDateParameter, updateEndDateParameter, updateSearchParameter, callSearchAPI, updateQuery, saveArticles, selectArticleForSaving }
 }

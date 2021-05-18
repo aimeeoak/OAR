@@ -26,7 +26,7 @@ export default function SearchView() {
     if (state.searchQuery === "") {
       return
     }
-    console.log(state.searchQuery);
+    callSearchAPI();
   }
 
   return <div id="topbar">
