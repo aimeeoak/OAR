@@ -2,6 +2,8 @@ import React, {use} from 'react';
 import 'antd/dist/antd.css';
 import './LibraryFilter.css';
 
+import useAppData from "../../hooks/useAppData";
+
 import { Menu, Checkbox, DatePicker, Space, Button } from 'antd';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 const { SubMenu } = Menu;
@@ -21,22 +23,32 @@ export default function LibraryFilter() {
     }
   };
 
+  const {state, selectTagsToAdd, selectProjectsToSaveTo, updateSearchParameter, callSearchAPI, updateQuery, saveArticles, selectArticleForSaving} = useAppData();
+
+
+  const projectItems = state.projects.map(project => {
+    return (
+      <Menu.Item key={project.id}><Checkbox onChange={() => selectProjectsToSaveTo(project.id)}> {project.name} </Checkbox></Menu.Item>
+    )
+  })
+
+  const tagItems = state.tags.map(tag => {
+    return (
+      <Menu.Item ><Checkbox onChange={() => selectTagsToAdd(tag)}> {tag} </Checkbox></Menu.Item>
+    )
+  })
+
+  const submitItem = <Menu.Item><Button className="library-submit">Submit</Button></Menu.Item>
+
   return (
     <Menu className="library-filterbox" mode="inline" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256 }}>
       <SubMenu key="sub1" icon={<MailOutlined />} title="Add to Shelf">
-        <Menu.Item key="1"><Checkbox> Project 1 </Checkbox></Menu.Item>
-        <Menu.Item key="2"><Checkbox> Project 2 </Checkbox></Menu.Item>
-        <Menu.Item key="3"><Checkbox> Project 3 </Checkbox></Menu.Item>
-        <Menu.Item key="4"><Checkbox> Project 4 </Checkbox></Menu.Item>
-        <Menu.Item key="5"><Checkbox> Project 5 </Checkbox></Menu.Item>
+        {projectItems}
       </SubMenu>
       <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Add Tags">
-        <Menu.Item key="6"><Checkbox> Math</Checkbox></Menu.Item>
-        <Menu.Item key="7"><Checkbox> Nerd Stuff</Checkbox></Menu.Item>
-        <Menu.Item key="8"><Checkbox> Applied Nuclear Thermodynamics</Checkbox></Menu.Item>
-        <Menu.Item key="9"><Checkbox> Art????</Checkbox></Menu.Item>
+        {tagItems}
       </SubMenu>
-      <Menu.Item key="10"><Button className="library-submit">Submit</Button></Menu.Item>
+      {submitItem}
     </Menu>
   );
 };
