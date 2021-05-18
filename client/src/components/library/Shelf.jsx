@@ -47,6 +47,11 @@ export default function Shelf(props) {
       key: 'keywords'
     },
     {
+      title: 'Description',
+      dataIndex: 'description',
+      key: 'description'
+    },
+    {
       title: 'Content',
       dataIndex: 'content',
       key: 'content'
@@ -84,6 +89,7 @@ export default function Shelf(props) {
         authors: article.authors,
         language: article.language,
         keywords: article.keywords,
+        description: article.description,
         content: <a href={article.content} target="_blank">Link to Full Text</a>,
         move: <>
         <Select defaultValue={project.name} onChange={selectProject}>
