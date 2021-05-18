@@ -104,7 +104,6 @@ export default function useAppData() {
     //Vahid, our cool mentor-- add params to the header of our request? 
     // 
    /*  const query = state.searchQuery
-    const url = `https://serpapi.com/search.json?engine=google&q=${query}&api_key=d8ac04c3bc6237908ef51d9d829e768164c6ceb664a522a6d77022333e83ed38`
     axios.get(url)
     .then(res => {
       console.log(res)
