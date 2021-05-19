@@ -1,6 +1,8 @@
 import { React, useState } from 'react';
 import 'antd/dist/antd.css';
-import "./Navbar.css";  
+import "./Navbar.css";
+import "../light-dark-mode/style.css";
+
 
 import logo from "./logo/oar_logo.png"
 import { Input, Button } from 'antd';
@@ -15,19 +17,20 @@ export default function SearchView() {
     saveArticles, selectArticleForSaving } = useAppData();
     const [darkMode, setDarkMode] = useState(false)
 
-  /* const [search, setSearch] = useState("");
-
-  const updateSearchString = event => {
-    const searchString = event.target.value;
-    setSearch(searchString);
-  } */
-
   const handleSubmit = (event) => {
     if (state.searchQuery === "") {
       return
     }
     console.log(state.searchQuery);
   }
+
+  const handleTheme = (event) => {
+      const currentTheme = document.documentElement.getAttribute("data-theme")
+  
+      const switchToTheme = currentTheme === "dark" ? "light" : "dark"
+  
+      document.documentElement.setAttribute("data-theme", switchToTheme)
+  };
 
   return <div id="topbar">
     <div>
@@ -41,19 +44,12 @@ export default function SearchView() {
       onSearch={handleSubmit}/>
     </form>
     <div className="button">
+      <Button 
+      onClick={handleTheme}>
+      Dark Mode</Button>
       <Button>Support</Button>
       <Button>Log In</Button>
       <Button className="sign-up" shape="round">Sign Up</Button>
-      <div className={`App ${darkMode && "dark-mode"}`}>
-      <label>
-        <input
-          type="checkbox"
-          checked={darkMode}
-          onChange={() => setDarkMode((darkMode) => !darkMode)}
-          />
-          Dark Mode
-      </label>
-    </div>
     </div>
   </div>
 }

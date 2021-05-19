@@ -7,7 +7,6 @@ import Navbar from "./components/navbar/Navbar"
 import Footer from "./components/footer/Footer"
 
 import Library from "./components/library/Library"
-import Search from "./components/search/Search"
 
 import egg from "./components/navbar/logo/egg.jpg"
 
@@ -26,13 +25,10 @@ function App() {
         <Navbar />
         <div className="filters-container">
           <SearchFilter />
+          <Library />
           <LibraryFilter />
         </div>
       <div>
-        <div>
-          <Library />
-          <Search />
-        </div>
       <h1>{ message }</h1>
       {eggState && <img src={egg} alt="Egg" />}
       {!eggState && <button onClick={greatIdea} > Do you dare? </button>}
