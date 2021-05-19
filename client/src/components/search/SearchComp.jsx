@@ -9,10 +9,7 @@ import Checkbox from 'antd/lib/checkbox/Checkbox';
 const { Search } = Input;
 const { Panel } = Collapse;
 
-export default function SearchComp() {
-  const { state, updateSearchParameter, 
-    callSearchAPI, updateQuery, 
-    saveArticles, selectArticleForSaving } = useAppData();
+export default function SearchComp(props) {
 
   const columns = [{
     title: 'Title',
@@ -20,8 +17,8 @@ export default function SearchComp() {
     key: 'title'
   }, {
     title: 'Author and Publication',
-    dataIndex: 'author',
-    key: 'author'
+    dataIndex: 'authors',
+    key: 'authors'
   }, {
     title: 'Language',
     dataIndex: 'language',
@@ -40,31 +37,21 @@ export default function SearchComp() {
     key: 'save'
   }];
 
-  const gmoResults = state.results.map((x) => {
+  const gmoResults = props.results.map((x) => {
     return {
-      key: state.results.indexOf(x),
+      key: props.results.indexOf(x),
       title: x.title,
-      author: x.publication_info.summary,
+      authors: x.publication_info.summary,
       snippet: x.snippet,
       language: "English",
       content: <a href={x.resources[0].link} target="_blank"> Link to Full Text </a>,
-      save: <button onClick={() => selectArticleForSaving(x.title)}>Save</button>
+      save: <button onClick={() => props.selectArticleForSaving(x.title)}>Save</button>
     }
   })
 
- 
-
   return (
     <>
-    <form onSubmit={event => event.preventDefault()}>
-      <Search placeholder="Search your topic..." 
-      style={{ width: 200 }}
-      enterButton
-      onChange={updateQuery}
-      onSearch={callSearchAPI}/>
-    </form>
     <Table
-      
       columns={columns}
       dataSource={gmoResults}
     />

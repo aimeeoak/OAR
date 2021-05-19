@@ -10,6 +10,8 @@ import Library from "./components/library/Library"
 import SearchComp from "./components/search/SearchComp"
 
 import egg from "./components/navbar/logo/egg.jpg"
+import useAppData from './hooks/useAppData';
+import Shelf from './components/library/Shelf';
 
 function App() {
   const [message, setMessage] = useState("He waits...")
@@ -20,19 +22,58 @@ function App() {
     setEggState(true);
   }
 
+  const {
+    state,
+    selectTagsToAdd,
+    selectProjectsToSaveTo,
+    updateStartDateParameter,
+    updateEndDateParameter,
+    updateSearchParameter,
+    callSearchAPI, 
+    updateQuery, 
+    saveArticles, 
+    selectArticleForSaving,
+    selectProject,
+    flagArticle,
+    moveArticle,
+    deleteArticle
+  } = useAppData()
+
   return (
     <div className="App">
-        <Navbar />
+        <Navbar 
+        onChange={updateQuery}
+        onSearch={callSearchAPI}/>
         <div className="filters-container">
-          <SearchFilter />
-          <LibraryFilter />
+          <SearchFilter 
+          updateStartDateParameter={updateSearchParameter}
+          updateEndDateParameter={updateEndDateParameter}
+          updateSearchParameter={updateSearchParameter}
+          />
+          <SearchComp 
+          results={state.results}
+          callSearchAPI={callSearchAPI}
+          updateQuery={updateQuery}
+          selectArticleForSaving={selectArticleForSaving}
+          />
+          <LibraryFilter 
+          projects={state.projects}
+          tags={state.tags}
+          selectProjectsToSaveTo={selectProjectsToSaveTo}
+          selectTagsToAdd={selectTagsToAdd}
+          saveArticles={saveArticles}
+          />
         </div>
       <div>
         <div>
-          <Library />
-        </div>
-        <div>
-          <SearchComp />
+          <Shelf 
+          projects={state.projects}
+          articles={state.articles}
+          selectProject={selectProject}
+          flagArticle={flagArticle}
+          moveArticle={moveArticle}
+          deleteArticle={deleteArticle}
+          />
         </div>
       <h1>{ message }</h1>
       {eggState && <img src={egg} alt="Egg" />}
@@ -41,25 +82,6 @@ function App() {
       <Footer />    
     </div>
   );
-
-  /* return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  ); */
 }
 
 export default App;

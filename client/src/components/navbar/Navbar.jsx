@@ -9,30 +9,21 @@ import useAppData from "../../hooks/useAppData"
 
 const { Search } = Input;
 
-export default function SearchView() {
-  const { state, updateSearchParameter, 
-    callSearchAPI, updateQuery, 
-    saveArticles, selectArticleForSaving } = useAppData();
+export default function SearchView(props) {
+    //callSearchAPI, updateQuery, 
     const [darkMode, setDarkMode] = useState(false)
 
-  /* const [search, setSearch] = useState("");
-
-  const updateSearchString = event => {
-    const searchString = event.target.value;
-    setSearch(searchString);
-  } */
-
-  /* const handleSubmit = (event) => {
-    if (state.searchQuery === "") {
-      return
-    }
-    callSearchAPI();
-  }
- */
   return <div id="topbar">
     <div>
       <img src={logo} class="logo" alt="OAR: Open Academic Research - research without paywalls Logo" />
     </div>
+    <form onSubmit={event => event.preventDefault()}>
+      <Search placeholder="Search your topic..." 
+      style={{ width: 200 }}
+      enterButton
+      onChange={props.onChange}
+      onSearch={props.onSearch}/>
+    </form>
     <div className="button">
       <Button>Support</Button>
       <Button>Log In</Button>

@@ -15,16 +15,6 @@ const { Option } = Select;
 
 export default function Shelf(props) {
 
-  const {
-    state, 
-    selectArticle,
-    selectProject, 
-    closeArticle, 
-    flagArticle, 
-    moveArticle, 
-    deleteArticle,
-  } = useLibData();
-  
   const columns = [
     {
       title: 'Title',
@@ -73,14 +63,14 @@ export default function Shelf(props) {
     }
   ]
 
-  const selectOptions = state.projects.map(project => {
+  const selectOptions = props.projects.map(project => {
     return <Option value={project.name}>{project.name}</Option>
   })
 
-  const projects = state.projects.map(project => {
+  const projects = props.projects.map(project => {
     // console.log("from shelf.jsx", state)
     // console.log("project.id", project.id)
-    const projectArticles = getArticlesByProject(state, project.id)
+    const projectArticles = getArticlesByProject(props.articles, project.id)
 
     const articles = projectArticles.map(article => {
       return {
@@ -92,13 +82,13 @@ export default function Shelf(props) {
         description: article.description,
         content: <a href={article.content} target="_blank">Link to Full Text</a>,
         move: <>
-        <Select defaultValue={project.name} onChange={selectProject}>
+        <Select defaultValue={project.name} onChange={() => props.selectProject()}>
           {selectOptions}
         </Select>
-        <button onClick={() => moveArticle(article.id)}>move</button>
+        <button onClick={() => props.moveArticle(article.id)}>move</button>
         </>,
-        flag: <button onClick={() => flagArticle(article.id)}>flag</button>,
-        delete: <button onClick={() => deleteArticle(article.id)}>delete</button>
+        flag: <button onClick={() => props.flagArticle(article.id)}>flag</button>,
+        delete: <button onClick={() => props.deleteArticle(article.id)}>delete</button>
       }
     })
 

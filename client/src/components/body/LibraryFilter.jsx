@@ -11,7 +11,7 @@ const { SubMenu } = Menu;
 
 const rootSubmenuKeys = ['sub1', 'sub2'];
 
-export default function LibraryFilter() {
+export default function LibraryFilter(props) {
   const [openKeys, setOpenKeys] = React.useState(['']);
 
   const onOpenChange = keys => {
@@ -23,22 +23,19 @@ export default function LibraryFilter() {
     }
   };
 
-  const {state, selectTagsToAdd, selectProjectsToSaveTo, updateSearchParameter, callSearchAPI, updateQuery, saveArticles, selectArticleForSaving} = useAppData();
-
-
-  const projectItems = state.projects.map(project => {
+  const projectItems = props.projects.map(project => {
     return (
-      <Menu.Item key={project.id}><Checkbox onChange={() => selectProjectsToSaveTo(project.id)}> {project.name} </Checkbox></Menu.Item>
+      <Menu.Item key={project.id}><Checkbox onChange={() => props.selectProjectsToSaveTo(project.id)}> {project.name} </Checkbox></Menu.Item>
     )
   })
 
-  const tagItems = state.tags.map(tag => {
+  const tagItems = props.tags.map(tag => {
     return (
-      <Menu.Item ><Checkbox onChange={() => selectTagsToAdd(tag)}> {tag} </Checkbox></Menu.Item>
+      <Menu.Item ><Checkbox onChange={() => props.selectTagsToAdd(tag)}> {tag} </Checkbox></Menu.Item>
     )
   })
 
-  const submitItem = <Menu.Item><Button onClick={saveArticles} className="library-submit">Submit</Button></Menu.Item>
+  const submitItem = <Menu.Item><Button onClick={() => props.saveArticles()} className="library-submit">Submit</Button></Menu.Item>
 
   return (
     <Menu className="library-filterbox" mode="inline" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256 }}>
