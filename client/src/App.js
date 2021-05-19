@@ -17,6 +17,10 @@ function App() {
   const [message, setMessage] = useState("He waits...")
   const [eggState, setEggState] = useState(false)
 
+ /*  <h1>{ message }</h1>
+  {eggState && <img src={egg} alt="Egg" />}
+  {!eggState && <button onClick={greatIdea} > Do you dare? </button>} */
+
   const greatIdea = function() {
     setMessage("The Keeper of Eggs rises from his slumber to offer you good luck");
     setEggState(true);
@@ -75,9 +79,6 @@ function App() {
           deleteArticle={deleteArticle}
           />
         </div>
-      <h1>{ message }</h1>
-      {eggState && <img src={egg} alt="Egg" />}
-      {!eggState && <button onClick={greatIdea} > Do you dare? </button>}
       </div>
       <Footer />    
     </div>

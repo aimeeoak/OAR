@@ -81,7 +81,7 @@ export default function Shelf(props) {
         description: article.description,
         content: <a href={article.content} target="_blank">Link to Full Text</a>,
         move: <>
-        <Select defaultValue={project.name} onChange={() => props.selectProject()}>
+        <Select defaultValue={project.name} onChange={props.selectProject}>
           {selectOptions}
         </Select>
         <button onClick={() => props.moveArticle(article.id)}>move</button>
