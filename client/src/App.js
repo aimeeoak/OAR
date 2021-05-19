@@ -25,6 +25,9 @@ function App() {
         <Navbar />
         <div className="filters-container">
           <SearchFilter />
+         <div>
+           <SearchComp />
+           </div> 
           <LibraryFilter />
         </div>
       <div>
@@ -32,7 +35,6 @@ function App() {
           <Library />
         </div>
         <div>
-          <SearchComp />
         </div>
       <h1>{ message }</h1>
       {eggState && <img src={egg} alt="Egg" />}

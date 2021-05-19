@@ -3,8 +3,6 @@ import dotenv from 'dotenv';
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// const SerpApi = require('google-search-results-nodejs')
-
 import SerpApi from 'google-search-results-nodejs'
 dotenv.config();
 
@@ -65,51 +63,14 @@ export default function useAppData() {
       q: state.searchQuery
     };
     const callback = (data) => {
-      //console.log(data["organic_results"])
       const organicResults = data["organic_results"];
       const gmoResults = organicResults.filter((x) =>  x.resources ? x : null)
-      // console.log("refined results", gmoResults)
-      //tite, authors, language, keywords, content, project_id
-/*      const realResults = gmoResults.map((x) => {
-        return {
-          key: gmoResults.indexOf(x),
-          title: x.title,
-          author: x.publication_info.summary,
-          snippet: x.snippet,
-          language: "English",
-          content: x.resources[0].link,
-        }
-      }) */
-      // console.log(gmoResults)
-      // console.log(realResults)
       setState(prev => ({
         ...prev,
         results: [ ...gmoResults ]
       }))
-      //title -- gmoResults.title
-      //author -- gmoResults.publication_info.author
-      // language-- on selection/search?
-      // keywords -- user adds 
-      // content-- gmoResults.reources.link
-      //project_id --user selection 
-
-
     };
     search.json(params, callback)
-    /* axios.get("/api/search", search )
-    .then((res) => {
-      console.log("response", res)
-    }) */
-
-    //Vahid, our cool mentor-- add params to the header of our request? 
-    // 
-   /*  const query = state.searchQuery
-    axios.get(url)
-    .then(res => {
-      console.log(res)
-      console.log(res.headers)
-      console.log(res.data)
-    }) */
   }
 
   // console.log(state.results);
