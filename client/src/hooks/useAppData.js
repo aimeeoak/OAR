@@ -86,14 +86,23 @@ export default function useAppData() {
     })
 
     const promisesArray = [];
+    const stateUpdateArray = [];
     
     for (const project of saveByProject) {
       for (const article of project) {
-        promisesArray.push(axios.post('/articles', article))
+        promisesArray.push(axios.post('/articles', article));
+        stateUpdateArray.push(article);
       }
     }
 
     axios.all(promisesArray)
+    .then(() => axios.get("/articles"))
+    .then(res => {
+      setState(prev => ({
+        ...prev,
+        articles: [...res.data]
+      }))
+    })
     
     /* .then((all) => {
       setState((prev) => ({

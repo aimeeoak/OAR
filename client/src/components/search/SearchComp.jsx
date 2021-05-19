@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import 'antd/dist/antd.css';
 //import './index.css';
-import { Table, Collapse, Select, Input, Button } from 'antd';
+import { Table, Collapse, Select, Input, Button, Checkbox } from 'antd';
 
 import useAppData from "../../hooks/useAppData";
-import Checkbox from 'antd/lib/checkbox/Checkbox';
 
 const { Search } = Input;
 const { Panel } = Collapse;
@@ -45,7 +44,7 @@ export default function SearchComp(props) {
       snippet: x.snippet,
       language: "English",
       content: <a href={x.resources[0].link} target="_blank"> Link to Full Text </a>,
-      save: <button onClick={() => props.selectArticleForSaving(x.title)}>Save</button>
+      save: <Checkbox onClick={() => props.selectArticleForSaving(x.title)}>Save</Checkbox>
     }
   })
 
