@@ -63,6 +63,58 @@ export default function useAppData() {
     });
   }, []);
 
+  const saveArticles = function() {
+    if (state.projectsToSaveTo.length === 0) {
+      return
+    }
+    const saveByProject = state.projectsToSaveTo.map(project => {
+      const articlesToSave = state.resultsToSave.map(result => {
+        console.log(result.title)
+        console.log(result)
+        return {
+          title: result.title,
+          authors: result.publication_info.summary,
+          language: "English",
+          keywords: "Spicy Meatball",
+          content: result.resources[0].link,
+          flagged: false,
+          project_id: project.id,
+          description: result.snippet
+        }
+      });
+      return articlesToSave
+    })
+
+    const promisesArray = [];
+    
+    for (const project of saveByProject) {
+      for (const article of project) {
+        promisesArray.push(axios.post('/articles', article))
+      }
+    }
+
+    axios.all(promisesArray)
+    
+    /* .then((all) => {
+      setState((prev) => ({
+        ...prev,
+        articles: [ ...state.articles, ...all[2].data],
+      }));
+    }); */
+
+    /* for (const project of saveByProject) {
+      for (const article of project) {
+        axios.post('/articles', article)
+        .then(res => {
+          setState(prev => ({
+            ...prev,
+            articles: [ ...state.articles, article ]
+          }))
+        });
+      }
+    } */
+  }
+
   const callSearchAPI = function() {
     const coolAPIKey = process.env.REACT_APP_SERP_API
     const search = new SerpApi.GoogleSearch(coolAPIKey)
@@ -145,37 +197,6 @@ export default function useAppData() {
         ...prev,
         tagsToAdd: [ ...newTagList ]
       }))
-    }
-  }
-
-  const saveArticles = function() {
-    // console.log(state.resultsToSave)
-    // console.log(state.projectsToSaveTo)
-    // console.log(state.tagsToAdd)
-    if (state.projectsToSaveTo.length === 0) {
-      return
-    }
-    const saveByProject = state.projectsToSaveTo.map(project => {
-      const articlesToSave = state.resultsToSave.map(result => {
-        return {
-          title: result.title,
-          authors: result.publication_info.summary,
-          language: "English",
-          keywords: "Spicy Meatball",
-          content: result.resources[0].link,
-          flagged: false,
-          project_id: project.id,
-          description: result.snippet
-        }
-      });
-      return articlesToSave
-    })
-    for (const project of saveByProject) {
-      for (const article of project) {
-        console.log(article)
-        axios.post('/articles', article)
-        .then(res => console.log(res));
-      }
     }
   }
 
