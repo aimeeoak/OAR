@@ -46,7 +46,7 @@ function App() {
         onSearch={callSearchAPI}/>
         <div className="filters-container">
           <SearchFilter 
-          updateStartDateParameter={updateSearchParameter}
+          updateStartDateParameter={updateStartDateParameter}
           updateEndDateParameter={updateEndDateParameter}
           updateSearchParameter={updateSearchParameter}
           />
