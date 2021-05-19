@@ -54,13 +54,16 @@ export default function useAppData() {
         }));
       })
   }, []);
-
+///ok, so the table has some pagination-- not sure how to access that, but there are more results beyond what we get
+//the num: 100 limits our organic results to 100 acutal results, and start: 20 (or, 30, 40, etc) fetches the next page of results
+// no idea how to attach this to the pagination but we can try!
   const callSearchAPI = function() {
     const coolAPIKey = process.env.REACT_APP_SERP_API
     const search = new SerpApi.GoogleSearch(coolAPIKey)
     const params = {
       engine: "google_scholar",
-      q: state.searchQuery
+      q: state.searchQuery,
+      num: 100
     };
     const callback = (data) => {
       const organicResults = data["organic_results"];

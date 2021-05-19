@@ -67,6 +67,7 @@ export default function SearchComp() {
       
       columns={columns}
       dataSource={gmoResults}
+      
     />
     </>
   );
