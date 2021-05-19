@@ -24,18 +24,14 @@ function App() {
     <div className="App">
         <Navbar />
         <div className="filters-container">
-          <SearchFilter />
-         <div>
-           <SearchComp />
-           </div> 
           <LibraryFilter />
+          {/* <SearchFilter /> */}
+           {/* <SearchComp /> */}
+         <div>
+           </div> 
+           <Library />
         </div>
       <div>
-        <div>
-          <Library />
-        </div>
-        <div>
-        </div>
       <h1>{ message }</h1>
       {eggState && <img src={egg} alt="Egg" />}
       {!eggState && <button onClick={greatIdea} > Do you dare? </button>}

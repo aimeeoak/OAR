@@ -34,8 +34,7 @@ export default function SearchView() {
       <img src={logo} class="logo" alt="OAR: Open Academic Research - research without paywalls Logo" />
     </div>
     <div className="button">
-      <Button>Support</Button>
-      <Button>Log In</Button>
+      <Button className="log-in" shape="round">Log In</Button>
       <Button className="sign-up" shape="round">Sign Up</Button>
     </div>
     <div className={`App ${darkMode && "dark-mode"}`}>

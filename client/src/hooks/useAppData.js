@@ -63,7 +63,7 @@ export default function useAppData() {
     const params = {
       engine: "google_scholar",
       q: state.searchQuery,
-      num: 100
+      num: 500
     };
     const callback = (data) => {
       const organicResults = data["organic_results"];
