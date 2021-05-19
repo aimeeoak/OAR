@@ -282,6 +282,8 @@ export default function useAppData() {
     const flagStatus = articleFind.flagged;
     articleFind.flagged = !flagStatus
 
+    console.log(articleFind.flagged)
+
     const articlesCopy = [...state.articles];
     for (const article of articlesCopy) {
       if (article.id === id) {
