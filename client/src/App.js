@@ -13,7 +13,6 @@ import egg from "./components/navbar/logo/egg.jpg"
 function App() {
   const [message, setMessage] = useState("He waits...")
   const [eggState, setEggState] = useState(false)
-  const [darkMode, setDarkMode] = useState(false)
 
   const greatIdea = function() {
     setMessage("The Keeper of Eggs rises from his slumber to offer you good luck");

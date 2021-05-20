@@ -12,26 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_05_12_221736) do
 
-  # create_table "api_articles", force: :cascade do |t|
-  #   t.datetime "created_at", precision: 6, null: false
-  #   t.datetime "updated_at", precision: 6, null: false
-  # end
-
-  # create_table "api_projects", force: :cascade do |t|
-  #   t.datetime "created_at", precision: 6, null: false
-  #   t.datetime "updated_at", precision: 6, null: false
-  # end
-
-  # create_table "api_searches", force: :cascade do |t|
-  #   t.datetime "created_at", precision: 6, null: false
-  #   t.datetime "updated_at", precision: 6, null: false
-  # end
-
-  # create_table "api_users", force: :cascade do |t|
-  #   t.datetime "created_at", precision: 6, null: false
-  #   t.datetime "updated_at", precision: 6, null: false
-  # end
-
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.string "authors"
