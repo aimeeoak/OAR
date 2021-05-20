@@ -4,6 +4,7 @@
 
 .moveArticle {
     background-image:url("./lib-icons/arrow.png");
+    background-color: transparent;
     background-size: cover;
     cursor: pointer;
     width: 35px;
@@ -13,6 +14,7 @@
 
 .flagArticle {
     background-image:url("./lib-icons/flag.png");
+    background-color: transparent;
     background-size: cover;
     cursor: pointer;
     width: 25px;
@@ -22,6 +24,7 @@
 
 .deleteArticle {
     background-image:url("./lib-icons/trash.png");
+    background-color: transparent;
     background-size: cover;
     cursor: pointer;
     width: 25px;
