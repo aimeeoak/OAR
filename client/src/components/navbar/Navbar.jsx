@@ -10,18 +10,9 @@ import useAppData from "../../hooks/useAppData"
 
 const { Search } = Input;
 
-export default function SearchView() {
-  const { state, updateSearchParameter, 
-    callSearchAPI, updateQuery, 
-    saveArticles, selectArticleForSaving } = useAppData();
-    const [darkMode, setDarkMode] = useState(false)
-
-  const handleSubmit = (event) => {
-    if (state.searchQuery === "") {
-      return
-    }
-    console.log(state.searchQuery);
-  }
+export default function SearchView(props) {
+    //callSearchAPI, updateQuery, 
+  const [darkMode, setDarkMode] = useState(false)
 
   const handleTheme = (event) => {
       const currentTheme = document.documentElement.getAttribute("data-theme")

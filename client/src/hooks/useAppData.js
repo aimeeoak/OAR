@@ -14,6 +14,7 @@ export default function useAppData() {
     articles: [],
     results: [],
     resultsToSave: [],
+    newProjectName: null,
     project: null,
     projects: [],
     projectsToSaveTo: [],
@@ -62,6 +63,33 @@ export default function useAppData() {
       }));
     });
   }, []);
+
+  const updateNewProjectName = event => {
+    const projectName = event[0].value;
+    setState(prev => ({
+      ...prev,
+      newProjectName: projectName
+    }))
+  }
+
+  const saveProject = () => {
+    const project = {
+      name: state.newProjectName,
+      description: "New project!",
+      user_id: 1
+    }
+    axios.post("/projects", project)
+    .then(() => {
+      return axios.get("/projects")
+    })
+    .then(res => {
+      setState(prev => ({
+        ...prev,
+        newProjectName: null,
+        projects: [ ...res.data ]
+      }))
+    })
+  }
 
   const saveArticles = function() {
     if (state.projectsToSaveTo.length === 0) {
@@ -354,6 +382,8 @@ export default function useAppData() {
     selectProject,
     flagArticle,
     moveArticle,
-    deleteArticle
+    deleteArticle,
+    updateNewProjectName,
+    saveProject
   };
 }

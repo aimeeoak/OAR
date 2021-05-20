@@ -40,7 +40,9 @@ function App() {
     selectProject,
     flagArticle,
     moveArticle,
-    deleteArticle
+    deleteArticle,
+    updateNewProjectName,
+    saveProject
   } = useAppData()
 
   return (
@@ -66,6 +68,8 @@ function App() {
           selectProjectsToSaveTo={selectProjectsToSaveTo}
           selectTagsToAdd={selectTagsToAdd}
           saveArticles={saveArticles}
+          updateNewProjectName={updateNewProjectName}
+          saveProject={saveProject}
           />
         </div>
       <div>
