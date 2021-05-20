@@ -64,6 +64,14 @@ export default function useAppData() {
     });
   }, []);
 
+  const clearSearchResults = () => {
+    setState(prev => ({
+      ...prev,
+      results: [],
+      resultsToSave: []
+    }))
+  }
+
   const updateNewProjectName = event => {
     const projectName = event[0].value;
     setState(prev => ({
@@ -384,6 +392,7 @@ export default function useAppData() {
     moveArticle,
     deleteArticle,
     updateNewProjectName,
-    saveProject
+    saveProject,
+    clearSearchResults
   };
 }

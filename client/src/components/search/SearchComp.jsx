@@ -51,6 +51,7 @@ export default function SearchComp(props) {
   return (
     <>
     <Table
+      background={"red"}
       columns={columns}
       dataSource={gmoResults}
     />

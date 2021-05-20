@@ -36,6 +36,7 @@ export default function LibraryFilter(props) {
   })
 
   const submitItem = <Menu.Item><Button onClick={() => props.saveArticles()} className="library-submit">Save Articles</Button></Menu.Item>
+  const clearItem = <Menu.Item><Button onClick={() => props.clearSearchResults()} className="library-submit">Clear Search Results</Button></Menu.Item>
 
   return (
     <Menu className="library-filterbox" mode="inline" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256 }}>
@@ -62,6 +63,7 @@ export default function LibraryFilter(props) {
         </Form>
       </SubMenu>
       {submitItem}
+      {clearItem}
     </Menu>
   );
 };
