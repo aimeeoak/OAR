@@ -111,7 +111,7 @@ export default function useAppData() {
           title: result.title,
           authors: result.publication_info.summary,
           language: "English",
-          keywords: "Spicy Meatball",
+          keywords: "Space Magic",
           content: result.resources[0].link,
           flagged: false,
           project_id: project.id,

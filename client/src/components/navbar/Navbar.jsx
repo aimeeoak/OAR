@@ -61,6 +61,8 @@ export default function SearchView(props) {
     <form onSubmit={event => event.preventDefault()}>
       <Search className="search-bar"
       placeholder="Search your topic..."
+      onChange={props.updateQuery}
+      onSearch={props.callSearchAPI}
       enterButton/>
     </form>
     </div>
