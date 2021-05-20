@@ -49,10 +49,10 @@ export default function SearchView(props) {
         <div class="slider round" onClick={handleTheme}></div> 
       </label> Dark Mode
       <br></br>
-      <label class="zoom-switch" for="checkbox" >
+      <label class="zoom-switch" for="zoom-checkbox" >
         <input type="checkbox" id="zoom-checkbox"  />
         <div class="slider round" onClick={handleZoom}></div> 
-      </label> Zoom
+      </label> Zoom Mode
       <br></br>
     </div>
     <div>

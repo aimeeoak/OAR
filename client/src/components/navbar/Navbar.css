@@ -2,7 +2,6 @@
     width: 100%;
     height: 250px;
     margin: auto;
-    padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -21,15 +20,49 @@
     float: left;    
     margin: 10px;
     overflow: hidden;
+    animation: fadeIn 3s;
+    -webkit-animation: fadeIn 3s;
+    -moz-animation: fadeIn 3s;
+    -o-animation: fadeIn 3s;
+    -ms-animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
 }
 
 .search-bar {
+    position: fixed;
     align-items: center;
+    width: 700px;
+    left: 575px;
+    top: 95px;
 }
 
 .all-buttons {
     position: absolute;
-    right: 15px;
+    right: 50px;
 }
 
 .sign-up {
@@ -102,6 +135,18 @@ input:checked + .slider:before {
 }
 
 .all-buttons:hover {
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.5);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.5);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.5);
+    transition: all 200ms ease-in;
+    transform: scale(1.3);
+}
+
+.search-bar:hover {
     z-index: 2;
     -webkit-transition: all 200ms ease-in;
     -webkit-transform: scale(1.5);

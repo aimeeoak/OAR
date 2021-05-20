@@ -6,6 +6,9 @@
     border-right: 4px solid white;
     border-bottom: 5px solid white;
     margin: 10px;
+    position: relative;
+    right: 15px;
+    top: 5px;
     height: 500px;
 }
 
