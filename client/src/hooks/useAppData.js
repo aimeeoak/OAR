@@ -161,7 +161,6 @@ export default function useAppData() {
   }
 
   const callSearchAPI = function() {
-    console.log("test")
     const coolAPIKey = process.env.REACT_APP_SERP_API
     const search = new SerpApi.GoogleSearch(coolAPIKey)
     const params = {
@@ -247,7 +246,6 @@ export default function useAppData() {
   }
 
   const updateQuery = event => { // put this in onChange in search bar
-    console.log(event.target.value)
     const searchString = event.target.value;
     setState(prev => ({
       ...prev,

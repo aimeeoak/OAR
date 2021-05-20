@@ -62,7 +62,7 @@ export default function SearchView(props) {
       <Search className="search-bar"
       placeholder="Search your topic..."
       onChange={props.updateQuery}
-      onPressEnter={() => props.callSearchAPI()}
+      onSearch={props.callSearchAPI}
       enterButton/>
     </form>
     </div>
