@@ -6,9 +6,8 @@ import ProjectItem from "./ProjectItem";
 import useLibData from '../../hooks/useLibData';
 
 import getArticlesByProject from '../../helpers/library_selectors'
-import Checkbox from 'antd/lib/checkbox/Checkbox';
 
-import { Table, Collapse, Select } from 'antd';
+import { Checkbox, Table, Collapse, Select } from 'antd';
 
 const { Panel } = Collapse;
 const { Option } = Select;
@@ -82,18 +81,18 @@ export default function Shelf(props) {
         description: article.description,
         content: <a href={article.content} target="_blank">Link to Full Text</a>,
         move: <>
-        <Select defaultValue={project.name} onChange={() => props.selectProject()}>
+        <Select defaultValue={project.name} onChange={props.selectProject}>
           {selectOptions}
         </Select>
-        <button onClick={() => props.moveArticle(article.id)}>move</button>
+        <button className="moveArticle" onClick={() => props.moveArticle(article.id)}>move</button>
         </>,
-        flag: <button onClick={() => props.flagArticle(article.id)}>flag</button>,
-        delete: <button onClick={() => props.deleteArticle(article.id)}>delete</button>
+        flag: <Checkbox className="flagArticle" defaultChecked={article.flagged} onClick={() => props.flagArticle(article.id)}></Checkbox>,
+        delete: <button type="submit" className="deleteArticle" onClick={() => props.deleteArticle(article.id)}>delete</button>
       }
     })
 
     return (
-      <Panel header={project.name} key={project.id}>
+      <Panel className="table" header={project.name} key={project.id}>
           <Table columns={columns} dataSource={articles}>
           </Table>
       </Panel>

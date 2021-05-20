@@ -14,6 +14,7 @@ export default function useAppData() {
     articles: [],
     results: [],
     resultsToSave: [],
+    newProjectName: null,
     project: null,
     projects: [],
     projectsToSaveTo: [],
@@ -63,6 +64,33 @@ export default function useAppData() {
     });
   }, []);
 
+  const updateNewProjectName = event => {
+    const projectName = event[0].value;
+    setState(prev => ({
+      ...prev,
+      newProjectName: projectName
+    }))
+  }
+
+  const saveProject = () => {
+    const project = {
+      name: state.newProjectName,
+      description: "New project!",
+      user_id: 1
+    }
+    axios.post("/projects", project)
+    .then(() => {
+      return axios.get("/projects")
+    })
+    .then(res => {
+      setState(prev => ({
+        ...prev,
+        newProjectName: null,
+        projects: [ ...res.data ]
+      }))
+    })
+  }
+
   const saveArticles = function() {
     if (state.projectsToSaveTo.length === 0) {
       return
@@ -86,14 +114,23 @@ export default function useAppData() {
     })
 
     const promisesArray = [];
+    const stateUpdateArray = [];
     
     for (const project of saveByProject) {
       for (const article of project) {
-        promisesArray.push(axios.post('/articles', article))
+        promisesArray.push(axios.post('/articles', article));
+        stateUpdateArray.push(article);
       }
     }
 
     axios.all(promisesArray)
+    .then(() => axios.get("/articles"))
+    .then(res => {
+      setState(prev => ({
+        ...prev,
+        articles: [...res.data]
+      }))
+    })
     
     /* .then((all) => {
       setState((prev) => ({
@@ -282,6 +319,8 @@ export default function useAppData() {
     const flagStatus = articleFind.flagged;
     articleFind.flagged = !flagStatus
 
+    console.log(articleFind.flagged)
+
     const articlesCopy = [...state.articles];
     for (const article of articlesCopy) {
       if (article.id === id) {
@@ -343,6 +382,8 @@ export default function useAppData() {
     selectProject,
     flagArticle,
     moveArticle,
-    deleteArticle
+    deleteArticle,
+    updateNewProjectName,
+    saveProject
   };
 }

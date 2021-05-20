@@ -17,6 +17,10 @@ function App() {
   const [message, setMessage] = useState("He waits...")
   const [eggState, setEggState] = useState(false)
 
+ /*  <h1>{ message }</h1>
+  {eggState && <img src={egg} alt="Egg" />}
+  {!eggState && <button onClick={greatIdea} > Do you dare? </button>} */
+
   const greatIdea = function() {
     setMessage("The Keeper of Eggs rises from his slumber to offer you good luck");
     setEggState(true);
@@ -36,7 +40,9 @@ function App() {
     selectProject,
     flagArticle,
     moveArticle,
-    deleteArticle
+    deleteArticle,
+    updateNewProjectName,
+    saveProject
   } = useAppData()
 
   return (
@@ -46,7 +52,7 @@ function App() {
         onSearch={callSearchAPI}/>
         <div className="filters-container">
           <SearchFilter 
-          updateStartDateParameter={updateSearchParameter}
+          updateStartDateParameter={updateStartDateParameter}
           updateEndDateParameter={updateEndDateParameter}
           updateSearchParameter={updateSearchParameter}
           />
@@ -62,6 +68,8 @@ function App() {
           selectProjectsToSaveTo={selectProjectsToSaveTo}
           selectTagsToAdd={selectTagsToAdd}
           saveArticles={saveArticles}
+          updateNewProjectName={updateNewProjectName}
+          saveProject={saveProject}
           />
         </div>
       <div>
@@ -75,9 +83,6 @@ function App() {
           deleteArticle={deleteArticle}
           />
         </div>
-      <h1>{ message }</h1>
-      {eggState && <img src={egg} alt="Egg" />}
-      {!eggState && <button onClick={greatIdea} > Do you dare? </button>}
       </div>
       <Footer />    
     </div>
