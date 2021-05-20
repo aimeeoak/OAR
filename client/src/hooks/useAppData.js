@@ -123,7 +123,7 @@ export default function useAppData() {
       }
     }
 
-    axios.all(promisesArray)
+    Promise.all(promisesArray)
     .then(() => axios.get("/articles"))
     .then(res => {
       setState(prev => ({

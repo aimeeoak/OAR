@@ -46,8 +46,8 @@ export default function SearchView(props) {
       <Search className="search-bar"
       placeholder="Search your topic..."
       enterButton
-      onChange={updateQuery}
-      onSearch={handleSubmit}/>
+      onChange={props.onChange}
+      onSearch={props.onSearch}/>
     </form>
     </div>
     </div>
