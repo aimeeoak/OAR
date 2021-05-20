@@ -22,34 +22,47 @@ export default function SearchView(props) {
       document.documentElement.setAttribute("data-theme", switchToTheme)
   };
 
-
+  const handleZoom = (event) => {
+    let isZoomOn = document.getElementsByTagName("body")[0].classList.contains("zoomies-on")
+  
+    if (isZoomOn) {
+      document.getElementsByTagName("body")[0].classList.remove("zoomies-on")
+    }
+    else {
+      document.getElementsByTagName("body")[0].classList.add("zoomies-on")
+    }
+  }
 
   return <div id="topbar">
     <div className='header-background'>
-    <div>
-      <img src={logo} class="logo" alt="OAR: Open Academic Research - research without paywalls Logo" />
-    </div>
-    <br></br>
-    <div class="all-buttons">
-      <Button>Support</Button>
-      <Button>Log In</Button>
-      <Button className="sign-up" shape="round">Sign Up</Button>
-    <br></br>
+      <div>
+        <img src={logo} class="logo" alt="OAR: Open Academic Research - research without paywalls Logo" />
+      </div>
+      <br></br>
+      <div class="all-buttons">
+        <Button>Support</Button>
+        <Button>Log In</Button>
+        <Button className="sign-up" shape="round">Sign Up</Button>
+        <br></br>
+      <br></br>
       <label class="theme-switch" for="checkbox" >
         <input type="checkbox" id="checkbox"  />
         <div class="slider round" onClick={handleTheme}></div> 
       </label> Dark Mode
       <br></br>
+      <label class="zoom-switch" for="zoom-checkbox" >
+        <input type="checkbox" id="zoom-checkbox"  />
+        <div class="slider round" onClick={handleZoom}></div> 
+      </label> Zoom Mode
+      <br></br>
+      </div>
     </div>
     <div>
     <form onSubmit={event => event.preventDefault()}>
       <Search className="search-bar"
       placeholder="Search your topic..."
-      enterButton
-      onChange={props.onChange}
-      onSearch={props.onSearch}/>
+      enterButton/>
     </form>
-    </div>
     </div>
   </div>
 }

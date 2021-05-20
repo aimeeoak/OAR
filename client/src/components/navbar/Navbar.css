@@ -2,7 +2,6 @@
     width: 100%;
     height: 250px;
     margin: auto;
-    padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -21,25 +20,110 @@
     float: left;    
     margin: 10px;
     overflow: hidden;
+    animation: fadeIn 3s;
+    -webkit-animation: fadeIn 3s;
+    -moz-animation: fadeIn 3s;
+    -o-animation: fadeIn 3s;
+    -ms-animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
 }
 
 .search-bar {
+    position: absolute;
     align-items: center;
+    width: 700px;
+    left: 575px;
+    top: 95px;
 }
 
 .all-buttons {
     position: absolute;
-    right: 15px;
+    right: 50px;
+    padding: 10px;
 }
 
 .sign-up {
     color: white;
     font-weight: 700;
+    border: 2px solid white;
     background-color: #52899b;
     outline: #52899b;
 }
 
-.logo:hover {
+.zoom-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+    }
+
+.zoom-switch input {
+    display:none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    }
+    
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    }
+    
+input:checked + .slider {
+    background-color: #2b2b2b;
+    }
+    
+input:checked + .slider:before {
+    transform: translateX(26px);
+    }
+    
+.slider.round {
+    border-radius: 34px;
+    }
+    
+.slider.round:before {
+    border-radius: 50%;
+    }
+
+body.zoomies-on .logo:hover {
     z-index: 2;
     -webkit-transition: all 200ms ease-in;
     -webkit-transform: scale(1.5);
@@ -51,7 +135,19 @@
     transform: scale(1.3);
 }
 
-.all-buttons:hover {
+body.zoomies-on .all-buttons:hover {
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.5);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.5);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.5);
+    transition: all 200ms ease-in;
+    transform: scale(1.3);
+}
+
+body.zoomies-on .search-bar:hover {
     z-index: 2;
     -webkit-transition: all 200ms ease-in;
     -webkit-transform: scale(1.5);

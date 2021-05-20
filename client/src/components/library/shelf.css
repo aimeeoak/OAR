@@ -1,13 +1,24 @@
+<<<<<<< HEAD
 /* .moveArticle {
     background-image:url("./lib-icons/arrow.png") no-repeat;
+=======
+.table {
+    background-color: transparent;
+}
+
+.moveArticle {
+    background-image:url("./lib-icons/arrow.png");
+    background-size: cover;
+>>>>>>> b9aa47dd1b8e238878b31694ac31cebec1b7d3a8
     cursor: pointer;
-    width: 25px;
+    width: 35px;
     height: 25px;
     border: none;
 }
 
 .flagArticle {
-    background-image:url("./lib-icons/flag.png") no-repeat;
+    background-image:url("./lib-icons/flag.png");
+    background-size: cover;
     cursor: pointer;
     width: 25px;
     height: 25px;
@@ -15,7 +26,8 @@
 }
 
 .deleteArticle {
-    background-image:url("./lib-icons/trash.png") no-repeat;
+    background-image:url("./lib-icons/trash.png");
+    background-size: cover;
     cursor: pointer;
     width: 25px;
     height: 25px;

@@ -1,4 +1,4 @@
-.footer:hover {
+body.zoomies-on .footer:hover {
     z-index: 2;
     -webkit-transition: all 200ms ease-in;
     -webkit-transform: scale(1.5);
