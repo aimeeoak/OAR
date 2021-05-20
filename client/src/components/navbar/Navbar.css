@@ -28,15 +28,7 @@
 
 .all-buttons {
     position: absolute;
-    right: 0px;
-}
-
-.button {
-    padding: 10px 15px;
-}
-
-.switch {
-    padding: 10px 15px;
+    right: 15px;
 }
 
 .sign-up {

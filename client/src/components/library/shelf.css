@@ -1,28 +1,27 @@
 .moveArticle {
-    background:url(/client/public/arrow.png) no-repeat;
-    cursor:pointer;
-    width: 200px;
-    height: 100px;
+    background-image:url("./lib-icons/arrow.png") no-repeat;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
     border: none;
 }
 
 .flagArticle {
-    background:url(/client/public/flag.png) no-repeat;
-    cursor:pointer;
-    width: 200px;
-    height: 100px;
+    background-image:url("./lib-icons/flag.png") no-repeat;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
     border: none;
 }
 
 .deleteArticle {
-    background:url(/client/public/trash.png) no-repeat;
-    cursor:pointer;
-    width: 200px;
-    height: 100px;
+    background-image:url("./lib-icons/trash.png") no-repeat;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
     border: none;
 }
 
-.table {
-    background-color: transparent;
-    width: auto;
+.listClass {
+    width: 50%;
 }

@@ -8,6 +8,8 @@ import useLibData from '../../hooks/useLibData';
 import getArticlesByProject from '../../helpers/library_selectors'
 import Checkbox from 'antd/lib/checkbox/Checkbox';
 
+import './shelf.css';
+
 import { Table, Collapse, Select } from 'antd';
 
 const { Panel } = Collapse;
@@ -89,10 +91,10 @@ export default function Shelf(props) {
         <Select defaultValue={project.name} onChange={selectProject}>
           {selectOptions}
         </Select>
-        <button type="submit" className="moveArticle" onClick={() => moveArticle(article.id)}>mvoe?</button>
+        <button type="submit" className="moveArticle" onClick={() => moveArticle(article.id)}></button>
         </>,
         flag: <button type="submit" className="flagArticle" onClick={() => flagArticle(article.id)}></button>,
-        delete: <button type="submit" className="deleteArticle" onClick={() => deleteArticle(article.id)}>balate</button>
+        delete: <button type="submit" className="deleteArticle" onClick={() => deleteArticle(article.id)}></button>
       }
     })
 

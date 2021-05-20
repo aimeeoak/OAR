@@ -8,7 +8,7 @@ import Footer from "./components/footer/Footer"
 
 import Library from "./components/library/Library"
 
-import egg from "./components/navbar/logo/egg.jpg"
+// import egg from "./components/navbar/logo/egg.jpg"
 
 function App() {
   const [message, setMessage] = useState("He waits...")
@@ -22,16 +22,18 @@ function App() {
   return (
     <div className="App">
         <Navbar />
+        <br></br>
         <div className="filters-container">
           <SearchFilter />
           <Library />
           <LibraryFilter />
         </div>
-      <div>
-      <h1>{ message }</h1>
+        <br></br>
+      {/* <div> */}
+      {/* <h1>{ message }</h1>
       {eggState && <img src={egg} alt="Egg" />}
       {!eggState && <button onClick={greatIdea} > Do you dare? </button>}
-      </div>
+      </div> */}
       <Footer />    
     </div>
   );
