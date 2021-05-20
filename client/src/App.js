@@ -49,8 +49,8 @@ function App() {
   return (
     <div className="App">
         <Navbar 
-        onChange={updateQuery}
-        onSearch={callSearchAPI}/>
+        updateQuery={updateQuery}
+        callSearchAPI={callSearchAPI}/>
         <div className="filters-container">
           <SearchFilter 
           updateStartDateParameter={updateStartDateParameter}
