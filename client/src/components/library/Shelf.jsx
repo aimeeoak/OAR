@@ -84,15 +84,15 @@ export default function Shelf(props) {
         <Select defaultValue={project.name} onChange={props.selectProject}>
           {selectOptions}
         </Select>
-        <button onClick={() => props.moveArticle(article.id)}>move</button>
+        <button className="moveArticle" onClick={() => props.moveArticle(article.id)}>move</button>
         </>,
-        flag: <Checkbox defaultChecked={article.flagged} onClick={() => props.flagArticle(article.id)}></Checkbox>,
-        delete: <button onClick={() => props.deleteArticle(article.id)}>delete</button>
+        flag: <Checkbox className="flagArticle" defaultChecked={article.flagged} onClick={() => props.flagArticle(article.id)}></Checkbox>,
+        delete: <button type="submit" className="deleteArticle" onClick={() => props.deleteArticle(article.id)}>delete</button>
       }
     })
 
     return (
-      <Panel header={project.name} key={project.id}>
+      <Panel className="table" header={project.name} key={project.id}>
           <Table columns={columns} dataSource={articles}>
           </Table>
       </Panel>
