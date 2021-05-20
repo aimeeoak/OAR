@@ -22,7 +22,16 @@ export default function SearchView(props) {
       document.documentElement.setAttribute("data-theme", switchToTheme)
   };
 
-
+  const handleZoom = (event) => {
+    let isZoomOn = document.getElementsByTagName("body")[0].classList.contains("zoomies-on")
+  
+    if (isZoomOn) {
+      document.getElementsByTagName("body")[0].classList.remove("zoomies-on")
+    }
+    else {
+      document.getElementsByTagName("body")[0].classList.add("zoomies-on")
+    }
+  }
 
   return <div id="topbar">
     <div className='header-background'>
@@ -40,14 +49,17 @@ export default function SearchView(props) {
         <div class="slider round" onClick={handleTheme}></div> 
       </label> Dark Mode
       <br></br>
+      <label class="zoom-switch" for="checkbox" >
+        <input type="checkbox" id="zoom-checkbox"  />
+        <div class="slider round" onClick={handleZoom}></div> 
+      </label> Zoom
+      <br></br>
     </div>
     <div>
     <form onSubmit={event => event.preventDefault()}>
       <Search className="search-bar"
       placeholder="Search your topic..."
-      enterButton
-      onChange={updateQuery}
-      onSearch={handleSubmit}/>
+      enterButton/>
     </form>
     </div>
     </div>

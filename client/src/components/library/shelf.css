@@ -1,3 +1,7 @@
+#table {
+    background-color: red;
+  }
+
 .moveArticle {
     background-image:url("./lib-icons/arrow.png") no-repeat;
     cursor: pointer;
