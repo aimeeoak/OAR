@@ -22,10 +22,20 @@
     margin: 10px;
 }
 
-.buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
+.search-bar {
+    align-items: center;
+}
+
+.all-buttons {
+    position: absolute;
+    right: 0px;
+}
+
+.button {
+    padding: 10px 15px;
+}
+
+.switch {
     padding: 10px 15px;
 }
 

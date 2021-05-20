@@ -38,20 +38,14 @@ export default function SearchView() {
     <div>
       <img src={logo} class="logo" alt="OAR: Open Academic Research - research without paywalls Logo" />
     </div>
-    <div>
-    <form onSubmit={event => event.preventDefault()}>
-      <Search placeholder="Search your topic..." 
-      style={{ width: 500 }}
-      enterButton
-      onChange={updateQuery}
-      onSearch={handleSubmit}/>
-    </form>
-    </div>
+    <br></br>
+    <div class="all-buttons">
     <div className="button">  
       <Button>Support</Button>
       <Button>Log In</Button>
       <Button className="sign-up" shape="round">Sign Up</Button>
     </div>
+    <br></br>
     <div class="switch">
       <label class="theme-switch" for="checkbox" >
         <input type="checkbox" id="checkbox"  />
@@ -81,6 +75,16 @@ export default function SearchView() {
           }}          
         />
         </div>
+    </div>
+    </div>
+    <div>
+    <form onSubmit={event => event.preventDefault()}>
+      <Search className="search-bar"
+      placeholder="Search your topic..."
+      enterButton
+      onChange={updateQuery}
+      onSearch={handleSubmit}/>
+    </form>
     </div>
     </div>
   </div>
