@@ -7,55 +7,82 @@ import Navbar from "./components/navbar/Navbar"
 import Footer from "./components/footer/Footer"
 
 import Library from "./components/library/Library"
+import SearchComp from "./components/search/SearchComp"
 
-// import egg from "./components/navbar/logo/egg.jpg"
+import egg from "./components/navbar/logo/egg.jpg"
+import useAppData from './hooks/useAppData';
+import Shelf from './components/library/Shelf';
 
 function App() {
   const [message, setMessage] = useState("He waits...")
   const [eggState, setEggState] = useState(false)
+
+ /*  <h1>{ message }</h1>
+  {eggState && <img src={egg} alt="Egg" />}
+  {!eggState && <button onClick={greatIdea} > Do you dare? </button>} */
 
   const greatIdea = function() {
     setMessage("The Keeper of Eggs rises from his slumber to offer you good luck");
     setEggState(true);
   }
 
+  const {
+    state,
+    selectTagsToAdd,
+    selectProjectsToSaveTo,
+    updateStartDateParameter,
+    updateEndDateParameter,
+    updateSearchParameter,
+    callSearchAPI, 
+    updateQuery, 
+    saveArticles, 
+    selectArticleForSaving,
+    selectProject,
+    flagArticle,
+    moveArticle,
+    deleteArticle
+  } = useAppData()
+
   return (
     <div className="App">
-        <Navbar />
-        <br></br>
+        <Navbar 
+        onChange={updateQuery}
+        onSearch={callSearchAPI}/>
         <div className="filters-container">
-          <SearchFilter />
-          <Library />
-          <LibraryFilter />
+          <SearchFilter 
+          updateStartDateParameter={updateStartDateParameter}
+          updateEndDateParameter={updateEndDateParameter}
+          updateSearchParameter={updateSearchParameter}
+          />
+          <SearchComp 
+          results={state.results}
+          callSearchAPI={callSearchAPI}
+          updateQuery={updateQuery}
+          selectArticleForSaving={selectArticleForSaving}
+          />
+          <LibraryFilter 
+          projects={state.projects}
+          tags={state.tags}
+          selectProjectsToSaveTo={selectProjectsToSaveTo}
+          selectTagsToAdd={selectTagsToAdd}
+          saveArticles={saveArticles}
+          />
         </div>
-        <br></br>
-      {/* <div> */}
-      {/* <h1>{ message }</h1>
-      {eggState && <img src={egg} alt="Egg" />}
-      {!eggState && <button onClick={greatIdea} > Do you dare? </button>}
-      </div> */}
+      <div>
+        <div>
+          <Shelf 
+          projects={state.projects}
+          articles={state.articles}
+          selectProject={selectProject}
+          flagArticle={flagArticle}
+          moveArticle={moveArticle}
+          deleteArticle={deleteArticle}
+          />
+        </div>
+      </div>
       <Footer />    
     </div>
   );
-
-  /* return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  ); */
 }
 
 export default App;

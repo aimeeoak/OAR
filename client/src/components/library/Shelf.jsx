@@ -6,27 +6,20 @@ import ProjectItem from "./ProjectItem";
 import useLibData from '../../hooks/useLibData';
 
 import getArticlesByProject from '../../helpers/library_selectors'
-import Checkbox from 'antd/lib/checkbox/Checkbox';
 
+<<<<<<< HEAD
 import './shelf.css';
 
 import { Table, Collapse, Select } from 'antd';
+=======
+import { Checkbox, Table, Collapse, Select } from 'antd';
+>>>>>>> ee7089c3613553736e8dbde6ffd40240c36d22da
 
 const { Panel } = Collapse;
 const { Option } = Select;
 
 export default function Shelf(props) {
 
-  const {
-    state, 
-    selectArticle,
-    selectProject, 
-    closeArticle, 
-    flagArticle, 
-    moveArticle, 
-    deleteArticle,
-  } = useLibData();
-  
   const columns = [
     {
       title: 'Title',
@@ -47,6 +40,11 @@ export default function Shelf(props) {
       title: 'Keywords',
       dataIndex: 'keywords',
       key: 'keywords'
+    },
+    {
+      title: 'Description',
+      dataIndex: 'description',
+      key: 'description'
     },
     {
       title: 'Content',
@@ -70,14 +68,14 @@ export default function Shelf(props) {
     }
   ]
 
-  const selectOptions = state.projects.map(project => {
+  const selectOptions = props.projects.map(project => {
     return <Option value={project.name}>{project.name}</Option>
   })
 
-  const projects = state.projects.map(project => {
+  const projects = props.projects.map(project => {
     // console.log("from shelf.jsx", state)
     // console.log("project.id", project.id)
-    const projectArticles = getArticlesByProject(state, project.id)
+    const projectArticles = getArticlesByProject(props.articles, project.id)
 
     const articles = projectArticles.map(article => {
       return {
@@ -86,15 +84,23 @@ export default function Shelf(props) {
         authors: article.authors,
         language: article.language,
         keywords: article.keywords,
+        description: article.description,
         content: <a href={article.content} target="_blank">Link to Full Text</a>,
         move: <>
-        <Select defaultValue={project.name} onChange={selectProject}>
+        <Select defaultValue={project.name} onChange={props.selectProject}>
           {selectOptions}
         </Select>
+<<<<<<< HEAD
         <button type="submit" className="moveArticle" onClick={() => moveArticle(article.id)}></button>
         </>,
         flag: <button type="submit" className="flagArticle" onClick={() => flagArticle(article.id)}></button>,
         delete: <button type="submit" className="deleteArticle" onClick={() => deleteArticle(article.id)}></button>
+=======
+        <button className="moveArticle" onClick={() => props.moveArticle(article.id)}>move</button>
+        </>,
+        flag: <Checkbox className="flagArticle" defaultChecked={article.flagged} onClick={() => props.flagArticle(article.id)}></Checkbox>,
+        delete: <button type="submit" className="deleteArticle" onClick={() => props.deleteArticle(article.id)}>delete</button>
+>>>>>>> ee7089c3613553736e8dbde6ffd40240c36d22da
       }
     })
 

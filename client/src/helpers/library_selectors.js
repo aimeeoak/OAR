@@ -22,8 +22,8 @@
   
   // need to feed this project id and the state.articles object to select relavent articles 
 
-  const getArticlesByProject = (state, id) => {
-  const foundArticles = state.articles.filter((article) => article.project_id === id)
+  const getArticlesByProject = (articles, id) => {
+  const foundArticles = articles.filter((article) => article.project_id === id)
   return foundArticles
  }
 

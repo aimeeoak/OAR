@@ -7,6 +7,9 @@
 # dotenv
 /.env
 
+# ds_store
+/.DS_Store
+
 # Ignore bundler config.
 /.bundle
 
