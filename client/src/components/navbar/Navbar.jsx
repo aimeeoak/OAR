@@ -2,9 +2,6 @@ import { React, useState } from 'react';
 import 'antd/dist/antd.css';
 import "./Navbar.css";
 import "../light-dark-mode/style.css";
-import "../font-size/style.css";
-import "../zoom/Zoom.jsx"
-
 
 import logo from "./logo/oar_logo.png"
 import { Input, Button } from 'antd';
@@ -34,9 +31,7 @@ export default function SearchView() {
       document.documentElement.setAttribute("data-theme", switchToTheme)
   };
 
-  const fontControls = (event) => {
-    
-  }
+
 
   return <div id="topbar">
     <div className='header-background'>
@@ -54,14 +49,6 @@ export default function SearchView() {
         <div class="slider round" onClick={handleTheme}></div> 
       </label> Dark Mode
       <br></br>
-      <div class="range">
-        <label>Zoom Level</label>
-        <input type="range" min="0.3" max="3" step="0.1" value="1" list="marks" oninput="scale(this.value)">
-        <datalist id="marks">
-          <option value="1"></option>
-        </datalist>
-        </input>
-      </div>
     </div>
     <div>
     <form onSubmit={event => event.preventDefault()}>

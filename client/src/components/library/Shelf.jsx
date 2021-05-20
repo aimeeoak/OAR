@@ -7,13 +7,7 @@ import useLibData from '../../hooks/useLibData';
 
 import getArticlesByProject from '../../helpers/library_selectors'
 
-<<<<<<< HEAD
-import './shelf.css';
-
-import { Table, Collapse, Select } from 'antd';
-=======
 import { Checkbox, Table, Collapse, Select } from 'antd';
->>>>>>> ee7089c3613553736e8dbde6ffd40240c36d22da
 
 const { Panel } = Collapse;
 const { Option } = Select;
@@ -90,17 +84,10 @@ export default function Shelf(props) {
         <Select defaultValue={project.name} onChange={props.selectProject}>
           {selectOptions}
         </Select>
-<<<<<<< HEAD
-        <button type="submit" className="moveArticle" onClick={() => moveArticle(article.id)}></button>
-        </>,
-        flag: <button type="submit" className="flagArticle" onClick={() => flagArticle(article.id)}></button>,
-        delete: <button type="submit" className="deleteArticle" onClick={() => deleteArticle(article.id)}></button>
-=======
         <button className="moveArticle" onClick={() => props.moveArticle(article.id)}>move</button>
         </>,
         flag: <Checkbox className="flagArticle" defaultChecked={article.flagged} onClick={() => props.flagArticle(article.id)}></Checkbox>,
         delete: <button type="submit" className="deleteArticle" onClick={() => props.deleteArticle(article.id)}>delete</button>
->>>>>>> ee7089c3613553736e8dbde6ffd40240c36d22da
       }
     })
 

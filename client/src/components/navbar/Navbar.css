@@ -20,6 +20,7 @@
     display: flex;
     float: left;    
     margin: 10px;
+    overflow: hidden;
 }
 
 .search-bar {
@@ -38,9 +39,26 @@
     outline: #52899b;
 }
 
-.textcontrols {
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    background-color: #52899b;
-  }
+.logo:hover {
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.5);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.5);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.5);
+    transition: all 200ms ease-in;
+    transform: scale(1.3);
+}
+
+.all-buttons:hover {
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.5);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.5);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.5);
+    transition: all 200ms ease-in;
+    transform: scale(1.3);
+}
