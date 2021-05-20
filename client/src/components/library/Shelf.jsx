@@ -8,11 +8,7 @@ import useLibData from '../../hooks/useLibData';
 
 import getArticlesByProject from '../../helpers/library_selectors'
 
-<<<<<<< HEAD
-import './shelf.css'
-=======
 import "./shelf.css";
->>>>>>> b9aa47dd1b8e238878b31694ac31cebec1b7d3a8
 
 import { Checkbox, Table, Collapse, Select } from 'antd';
 
