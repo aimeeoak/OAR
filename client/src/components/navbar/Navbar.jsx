@@ -35,15 +35,16 @@ export default function SearchView(props) {
 
   return <div id="topbar">
     <div className='header-background'>
-    <div>
-      <img src={logo} class="logo" alt="OAR: Open Academic Research - research without paywalls Logo" />
-    </div>
-    <br></br>
-    <div class="all-buttons">
-      <Button>Support</Button>
-      <Button>Log In</Button>
-      <Button className="sign-up" shape="round">Sign Up</Button>
-    <br></br>
+      <div>
+        <img src={logo} class="logo" alt="OAR: Open Academic Research - research without paywalls Logo" />
+      </div>
+      <br></br>
+      <div class="all-buttons">
+        <Button>Support</Button>
+        <Button>Log In</Button>
+        <Button className="sign-up" shape="round">Sign Up</Button>
+        <br></br>
+      <br></br>
       <label class="theme-switch" for="checkbox" >
         <input type="checkbox" id="checkbox"  />
         <div class="slider round" onClick={handleTheme}></div> 
@@ -54,6 +55,7 @@ export default function SearchView(props) {
         <div class="slider round" onClick={handleZoom}></div> 
       </label> Zoom Mode
       <br></br>
+      </div>
     </div>
     <div>
     <form onSubmit={event => event.preventDefault()}>
@@ -61,7 +63,6 @@ export default function SearchView(props) {
       placeholder="Search your topic..."
       enterButton/>
     </form>
-    </div>
     </div>
   </div>
 }
