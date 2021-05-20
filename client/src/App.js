@@ -42,7 +42,8 @@ function App() {
     moveArticle,
     deleteArticle,
     updateNewProjectName,
-    saveProject
+    saveProject,
+    clearSearchResults
   } = useAppData()
 
   return (
@@ -70,6 +71,7 @@ function App() {
           saveArticles={saveArticles}
           updateNewProjectName={updateNewProjectName}
           saveProject={saveProject}
+          clearSearchResults={clearSearchResults}
           />
         </div>
       <div>
