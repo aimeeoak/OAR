@@ -1,0 +1,22 @@
+.ant-table-tbody > tr > td, .ant-table-thead > tr > th
+{
+    padding:4px;
+    opacity: 0.8    
+}
+tr:nth-child(odd){ 
+  background-color: #52899b;
+}
+tr:nth-child(even){
+  background-color: #c6dac9;
+}
+thead[class*="ant-table-thead"] th{
+    background-color:rgba(238, 180, 148, 0.3) !important;
+    color: white;
+    font-weight: bold;
+    border-color: #000;
+    text-align: center;
+  }
+
+.ant-table-tbody > tr:hover > td {
+    opacity: 1
+}

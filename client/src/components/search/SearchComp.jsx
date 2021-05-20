@@ -3,6 +3,8 @@ import 'antd/dist/antd.css';
 //import './index.css';
 import { Table, Collapse, Select, Input, Button, Checkbox } from 'antd';
 
+import './SearchComp.css'
+
 import useAppData from "../../hooks/useAppData";
 
 const { Search } = Input;
@@ -50,11 +52,15 @@ export default function SearchComp(props) {
 
   return (
     <>
-    <Table
-      background={"red"}
+    {props.results.length === 0 && <div>search results pending!</div>}
+    {props.results.length !== 0 &&
+    <Table className="table-layout"
+    pagination={false}
       columns={columns}
       dataSource={gmoResults}
     />
+    }
+      
     </>
   );
 }
