@@ -9,7 +9,7 @@ import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/ico
 const { SubMenu } = Menu;
 // const { RangePicker } = DatePicker;
 
-const rootSubmenuKeys = ['sub1', 'sub2'];
+const rootSubmenuKeys = ['sub1', 'sub2', 'sub3'];
 
 export default function LibraryFilter(props) {
   const [openKeys, setOpenKeys] = React.useState(['']);
