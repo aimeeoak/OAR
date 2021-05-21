@@ -52,7 +52,7 @@ export default function SearchComp(props) {
 
   return (
     <>
-    {props.results.length === 0 && <div>search results pending!</div>}
+    {props.results.length === 0 && <div> Start a Search! </div>}
     {props.results.length !== 0 &&
     <Table className="table-layout"
     pagination={false}
