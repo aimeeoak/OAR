@@ -1,6 +1,6 @@
 
 ## OAR: Open Academic Resource 
-Ahoy Matey! Welcome aboard to OAR, the Open Academic Resource. OAR is a web scraping search app built with SerpApi that finds free and open source academic resources. Beyond searching the open seas, OAR saves your treasured articles into project shelves for easy access and organization. 
+Ahoy Matey! Welcome aboard to OAR, the Open Academic Resource. OAR is a web scraping search app built with [SerpApi](https://serpapi.com/google-scholar-api) that finds free and open source academic resources. Beyond searching the open seas, OAR saves your treasured articles into project shelves for easy access and organization. 
 
 OAR uses React on the frontend and a Rails API server on the backend. 
 
@@ -48,7 +48,7 @@ OAR was created by Capitan Aimee Garriok ([@aimeeoak](https://github.com/aimeeoa
   - rails 6.01
   - sqlite3
 ## Major Bugs
-- CORS, which is not a good thing! We ran into this bug later in the game, and opted to work around it to ensure our project was closer to finished rather than spend too much time attempting to fix it. We are currently using a Chrome extension called "Allow CORS" to bypass this. 
+- CORS, which is not a good thing! We ran into this bug later in the game, and opted to work around it to ensure our project was closer to finished rather than spend too much time attempting to fix it. [We are currently using a Chrome extension called "Allow CORS" to bypass this.](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf) 
 - Client server does not boot to preferred port. 
 ## Stretch Goals
 - Fix the CORS error
