@@ -12,7 +12,7 @@ OAR was created by Capitan Aimee Garriok ([@aimeeoak](https://github.com/aimeeoa
 ![The Front Page](https://github.com/SThiara/fresh-OAR/blob/8531f6ad78e729fd0086f5022caf6d921b3734aa/docs/oar-front-page.png)
 - *The Front Page*
 
-![GIF of dark mode and zoom mode](https://github.com/SThiara/fresh-OAR/blob/8531f6ad78e729fd0086f5022caf6d921b3734aa/docs/oar-search-gif.gif)
+![GIF of dark mode and zoom mode](https://github.com/mollyet/fresh-OAR/blob/232dc80ffeccd3f9050b54efa69652ec0960cf46/docs/oar-accessibility-gif.gif)
  - *GIF of dark mode and zoom mode*
 
 ![Example search for "memes"](https://github.com/SThiara/fresh-OAR/blob/8531f6ad78e729fd0086f5022caf6d921b3734aa/docs/oar-meme-search.png)
