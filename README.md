@@ -6,23 +6,23 @@ OAR uses React on the frontend and a Rails API server on the backend.
 
 OAR has several accessibility features such as zoom mode, to zoom in on individual components, and dark mode. 
 
-OAR was created by Capitan Aimee Garriok (@aimeeoak), First Mate Molly Trepanier (@mollyet), and Bosun Sajan Thiara (@sthaira) as our final project for the Lighthouse Labs Web Development Bootcamp. 
+OAR was created by Capitan Aimee Garriok ([@aimeeoak](https://github.com/aimeeoak)), First Mate Molly Trepanier ([@mollyet](https://github.com/mollyet/)), and Bosun Sajan Thiara ([@sthaira](https://github.com/SThiara)) as our final project for the [Lighthouse Labs Web Development Bootcamp](https://www.lighthouselabs.ca/). 
 ## Screenshots
 
 ![The Front Page](https://github.com/SThiara/fresh-OAR/blob/8531f6ad78e729fd0086f5022caf6d921b3734aa/docs/oar-front-page.png)
-*The Front Page*
+- *The Front Page*
 
 ![GIF of dark mode and zoom mode](https://github.com/SThiara/fresh-OAR/blob/8531f6ad78e729fd0086f5022caf6d921b3734aa/docs/oar-search-gif.gif)
-*GIF of dark mode and zoom mode*
+ - *GIF of dark mode and zoom mode*
 
 ![Example search for "memes"](https://github.com/SThiara/fresh-OAR/blob/8531f6ad78e729fd0086f5022caf6d921b3734aa/docs/oar-meme-search.png)
-*Example search for "memes"*
+- *Example search for "memes"*
 
 ![GIF of example search for "Christian Nally" and adding it to an existing project.](https://github.com/SThiara/fresh-OAR/blob/8531f6ad78e729fd0086f5022caf6d921b3734aa/docs/oar-search-gif.gif)
-*GIF of example search for "Christian Nally" and adding it to an existing project.*
+- *GIF of example search for "Christian Nally" and adding it to an existing project.*
 
 !["Memeology" Project](https://github.com/SThiara/fresh-OAR/blob/8531f6ad78e729fd0086f5022caf6d921b3734aa/docs/oar-memeology-project.png)
-*"Memeology" Project*
+- *"Memeology" Project*
 
 
 ## Setup
