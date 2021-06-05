@@ -80,8 +80,9 @@ export default function useAppData() {
     }))
   }
 
-  const saveProject = () => {
-    const project = {
+  const saveProject = event => {
+    console.log(event.target.value)
+    /* const project = {
       name: state.newProjectName,
       description: "New project!",
       user_id: 1
@@ -96,7 +97,7 @@ export default function useAppData() {
         newProjectName: null,
         projects: [ ...res.data ]
       }))
-    })
+    }) */
   }
 
   const saveArticles = function() {
@@ -160,8 +161,51 @@ export default function useAppData() {
     } */
   }
 
-  const callSearchAPI = function() {
-    const coolAPIKey = process.env.REACT_APP_SERP_API
+  const callSearchAPI = function(event) {
+    console.log(event)
+    setState(prev => ({
+      ...prev,
+      results: [
+        {
+          title: "Apocalypse Andy",
+          publication_info: {
+            summary: "Lucy G."
+          },
+          snippet: "A short description about a paper that doesn't exist anywhere but in the recesses of this application",
+          resources: [
+            {
+            link: "http://localhost:3001"
+          }
+          ]
+        }, 
+        {
+          title: "Nautical Nally",
+          publication_info: {
+            summary: "Lola T."
+          },
+          snippet: "A short description about a paper that doesn't exist anywhere but in the recesses of this application",
+          resources: [
+            {
+            link: "http://localhost:3001"
+          }
+          ]
+        }, 
+        {
+          title: "Galloping Gary",
+          publication_info: {
+            summary: "Jackie T."
+          },
+          snippet: "A short description about a paper that doesn't exist anywhere but in the recesses of this application",
+          resources: [
+            {
+            link: "http://localhost:3001"
+          }
+          ]
+        }
+      ]
+    }))
+
+    /* const coolAPIKey = process.env.REACT_APP_SERP_API
     const search = new SerpApi.GoogleSearch(coolAPIKey)
     const params = {
       engine: "google_scholar",
@@ -175,7 +219,7 @@ export default function useAppData() {
         results: [ ...gmoResults ]
       }))
     };
-    search.json(params, callback)
+    search.json(params, callback) */
   }
 
   const selectArticleForSaving = function(title) {
