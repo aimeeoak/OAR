@@ -104,8 +104,6 @@ export default function useAppData() {
     }
     const saveByProject = state.projectsToSaveTo.map(project => {
       const articlesToSave = state.resultsToSave.map(result => {
-        console.log(result.title)
-        console.log(result)
         return {
           title: result.title,
           authors: result.publication_info.summary,
