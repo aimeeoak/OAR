@@ -123,16 +123,20 @@ export default function useAppData() {
     })
 
     const promisesArray = [];
-    const stateUpdateArray = [];
     
     for (const project of saveByProject) {
       for (const article of project) {
-        promisesArray.push(axios.post('/articles', article));
-        stateUpdateArray.push(article);
+        promisesArray.push(article);
       }
     }
 
-    axios.all(promisesArray)
+    const saveRequests = async function(arr) {
+      for (const article of arr) {
+        const wait = await axios.post('/articles', article) 
+      }
+    }
+
+    saveRequests(promisesArray)
     .then(() => axios.get("/articles"))
     .then(res => {
       setState(prev => ({
@@ -171,7 +175,7 @@ export default function useAppData() {
           publication_info: {
             summary: "Lucy G."
           },
-          snippet: "A short description about a paper that doesn't exist anywhere but in the recesses of this application",
+          snippet: "A dissertation on the potential of Andy becoming Supreme Leader of the Universe",
           resources: [
             {
             link: "http://localhost:3001"
@@ -183,7 +187,7 @@ export default function useAppData() {
           publication_info: {
             summary: "Lola T."
           },
-          snippet: "A short description about a paper that doesn't exist anywhere but in the recesses of this application",
+          snippet: "A short description about Nally's future aspirations to sail the world",
           resources: [
             {
             link: "http://localhost:3001"
@@ -195,7 +199,7 @@ export default function useAppData() {
           publication_info: {
             summary: "Jackie T."
           },
-          snippet: "A short description about a paper that doesn't exist anywhere but in the recesses of this application",
+          snippet: "How to ride horses, with Gary",
           resources: [
             {
             link: "http://localhost:3001"
