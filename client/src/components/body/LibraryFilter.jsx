@@ -47,7 +47,7 @@ export default function LibraryFilter(props) {
         {tagItems}
       </SubMenu>
       <SubMenu key="sub3" icon={<MailOutlined />} title="Create a New Project">
-      <Form onFinish={props.saveProject} onFieldsChange={props.updateNewProjectName}>
+      <Form onFinish={props.saveProject}>
         <Form.Item
         label="New Project"
         name="new-project"

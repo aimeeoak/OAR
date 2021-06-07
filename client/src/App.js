@@ -34,14 +34,12 @@ function App() {
     updateEndDateParameter,
     updateSearchParameter,
     callSearchAPI, 
-    updateQuery, 
     saveArticles, 
     selectArticleForSaving,
     selectProject,
     flagArticle,
     moveArticle,
     deleteArticle,
-    updateNewProjectName,
     saveProject,
     clearSearchResults
   } = useAppData()
@@ -49,7 +47,6 @@ function App() {
   return (
     <div className="App">
         <Navbar 
-        updateQuery={updateQuery}
         callSearchAPI={callSearchAPI}/>
         <div className="filters-container">
           <SearchFilter 
@@ -60,7 +57,6 @@ function App() {
           <SearchComp 
           results={state.results}
           callSearchAPI={callSearchAPI}
-          updateQuery={updateQuery}
           selectArticleForSaving={selectArticleForSaving}
           />
           <LibraryFilter 
@@ -69,7 +65,6 @@ function App() {
           selectProjectsToSaveTo={selectProjectsToSaveTo}
           selectTagsToAdd={selectTagsToAdd}
           saveArticles={saveArticles}
-          updateNewProjectName={updateNewProjectName}
           saveProject={saveProject}
           clearSearchResults={clearSearchResults}
           />
