@@ -128,7 +128,7 @@ export default function useAppData() {
 
     const saveRequests = async function(arr) {
       for (const article of arr) {
-        const wait = await axios.post('/articles', article) 
+        await axios.post('/articles', article) 
       }
     }
 

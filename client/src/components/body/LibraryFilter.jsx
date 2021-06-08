@@ -1,13 +1,10 @@
-import React, {use} from 'react';
+import React from 'react';
 import 'antd/dist/antd.css';
 import './LibraryFilter.css';
 
-import useAppData from "../../hooks/useAppData";
-
-import { Menu, Checkbox, DatePicker, Space, Button, Form, Input } from 'antd';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import { Menu, Checkbox, Button, Form, Input } from 'antd';
+import { AppstoreOutlined, MailOutlined} from '@ant-design/icons';
 const { SubMenu } = Menu;
-// const { RangePicker } = DatePicker;
 
 const rootSubmenuKeys = ['sub1', 'sub2', 'sub3'];
 

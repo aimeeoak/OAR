@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import getArticlesByProject from "../helpers/library_selectors";
 
 export default function useLibData() {
   const [state, setState] = useState({
