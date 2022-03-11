@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import 'antd/dist/antd.css';
 //import './index.css';
-import { Table, Collapse, Select, Input, Button, Checkbox } from 'antd';
+import { Table, Checkbox } from 'antd';
 
 import './SearchComp.css'
-
-import useAppData from "../../hooks/useAppData";
-
-const { Search } = Input;
-const { Panel } = Collapse;
 
 export default function SearchComp(props) {
 

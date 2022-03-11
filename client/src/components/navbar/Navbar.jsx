@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React from 'react';
 import 'antd/dist/antd.css';
 import "./Navbar.css";
 import "../light-dark-mode/style.css";
@@ -6,13 +6,10 @@ import "../light-dark-mode/style.css";
 import logo from "./logo/oar_logo.png"
 import { Input, Button } from 'antd';
 
-import useAppData from "../../hooks/useAppData"
-
 const { Search } = Input;
 
 export default function SearchView(props) {
-    //callSearchAPI, updateQuery, 
-  const [darkMode, setDarkMode] = useState(false)
+  // const [darkMode, setDarkMode] = useState(false)
 
   const handleTheme = (event) => {
       const currentTheme = document.documentElement.getAttribute("data-theme")
@@ -61,7 +58,6 @@ export default function SearchView(props) {
     <form onSubmit={event => event.preventDefault()}>
       <Search className="search-bar"
       placeholder="Search your topic..."
-      onChange={props.updateQuery}
       onSearch={props.callSearchAPI}
       enterButton/>
     </form>

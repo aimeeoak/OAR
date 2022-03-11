@@ -3,7 +3,8 @@ import dotenv from 'dotenv';
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import SerpApi from 'google-search-results-nodejs'
+// DO NOT REMOVE
+// import SerpApi from 'google-search-results-nodejs'
 
 dotenv.config();
 
@@ -14,7 +15,6 @@ export default function useAppData() {
     articles: [],
     results: [],
     resultsToSave: [],
-    newProjectName: null,
     project: null,
     projects: [],
     projectsToSaveTo: [],
@@ -72,17 +72,17 @@ export default function useAppData() {
     }))
   }
 
-  const updateNewProjectName = event => {
-    const projectName = event[0].value;
-    setState(prev => ({
-      ...prev,
-      newProjectName: projectName
-    }))
-  }
+  // const updateNewProjectName = event => {
+  //   const projectName = event[0].value;
+  //   setState(prev => ({
+  //     ...prev,
+  //     newProjectName: projectName
+  //   }))
+  // }
 
-  const saveProject = () => {
+  const saveProject = event => {
     const project = {
-      name: state.newProjectName,
+      name: event["new-project"],
       description: "New project!",
       user_id: 1
     }
@@ -93,7 +93,6 @@ export default function useAppData() {
     .then(res => {
       setState(prev => ({
         ...prev,
-        newProjectName: null,
         projects: [ ...res.data ]
       }))
     })
@@ -105,8 +104,6 @@ export default function useAppData() {
     }
     const saveByProject = state.projectsToSaveTo.map(project => {
       const articlesToSave = state.resultsToSave.map(result => {
-        console.log(result.title)
-        console.log(result)
         return {
           title: result.title,
           authors: result.publication_info.summary,
@@ -122,16 +119,20 @@ export default function useAppData() {
     })
 
     const promisesArray = [];
-    const stateUpdateArray = [];
     
     for (const project of saveByProject) {
       for (const article of project) {
-        promisesArray.push(axios.post('/articles', article));
-        stateUpdateArray.push(article);
+        promisesArray.push(article);
       }
     }
 
-    axios.all(promisesArray)
+    const saveRequests = async function(arr) {
+      for (const article of arr) {
+        await axios.post('/articles', article) 
+      }
+    }
+
+    saveRequests(promisesArray)
     .then(() => axios.get("/articles"))
     .then(res => {
       setState(prev => ({
@@ -139,33 +140,57 @@ export default function useAppData() {
         articles: [...res.data]
       }))
     })
-    
-    /* .then((all) => {
-      setState((prev) => ({
-        ...prev,
-        articles: [ ...state.articles, ...all[2].data],
-      }));
-    }); */
-
-    /* for (const project of saveByProject) {
-      for (const article of project) {
-        axios.post('/articles', article)
-        .then(res => {
-          setState(prev => ({
-            ...prev,
-            articles: [ ...state.articles, article ]
-          }))
-        });
-      }
-    } */
   }
 
-  const callSearchAPI = function() {
+  const callSearchAPI = function(event) {
+    setState(prev => ({
+      ...prev,
+      results: [
+        {
+          title: "Apocalypse Andy",
+          publication_info: {
+            summary: "Lucy G."
+          },
+          snippet: "A dissertation on the potential of Andy becoming Supreme Leader of the Universe",
+          resources: [
+            {
+            link: "http://localhost:3001"
+          }
+          ]
+        }, 
+        {
+          title: "Nautical Nally",
+          publication_info: {
+            summary: "Lola T."
+          },
+          snippet: "A short description about Nally's future aspirations to sail the world",
+          resources: [
+            {
+            link: "http://localhost:3001"
+          }
+          ]
+        }, 
+        {
+          title: "Galloping Gary",
+          publication_info: {
+            summary: "Jackie T."
+          },
+          snippet: "How to ride horses, with Gary",
+          resources: [
+            {
+            link: "http://localhost:3001"
+          }
+          ]
+        }
+      ]
+    }))
+
+    /* DO NOT REMOVE - important code for the API call to work if a key is available
     const coolAPIKey = process.env.REACT_APP_SERP_API
     const search = new SerpApi.GoogleSearch(coolAPIKey)
     const params = {
       engine: "google_scholar",
-      q: state.searchQuery
+      q: event // used to be state.searchQuery, switched to event
     };
     const callback = (data) => {
       const organicResults = data["organic_results"];
@@ -175,7 +200,8 @@ export default function useAppData() {
         results: [ ...gmoResults ]
       }))
     };
-    search.json(params, callback)
+    search.json(params, callback) 
+    */
   }
 
   const selectArticleForSaving = function(title) {
@@ -245,13 +271,14 @@ export default function useAppData() {
     }
   }
 
-  const updateQuery = event => { // put this in onChange in search bar
-    const searchString = event.target.value;
-    setState(prev => ({
-      ...prev,
-      searchQuery: searchString
-    }))
-  }
+  // const updateQuery = event => { // put this in onChange in search bar
+  //   console.log("test")
+  //   const searchString = event.target.value;
+  //   setState(prev => ({
+  //     ...prev,
+  //     searchQuery: searchString
+  //   }))
+  // }
 
   const updateSearchParameter = function(category, name) {
     const categoryToChange = { ...state[category] };
@@ -384,14 +411,12 @@ export default function useAppData() {
     updateEndDateParameter,
     updateSearchParameter,
     callSearchAPI, 
-    updateQuery, 
     saveArticles, 
     selectArticleForSaving,
     selectProject,
     flagArticle,
     moveArticle,
     deleteArticle,
-    updateNewProjectName,
     saveProject,
     clearSearchResults
   };

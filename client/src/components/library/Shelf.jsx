@@ -1,16 +1,12 @@
 import React from "react";
 
-import ArticleItem from "./ArticleItem";
-import ProjectItem from "./ProjectItem"; 
 import "../light-dark-mode/style.css";
-
-import useLibData from '../../hooks/useLibData';
 
 import getArticlesByProject from '../../helpers/library_selectors'
 
-import "./shelf.css";
+import './shelf.css'
 
-import { Checkbox, Table, Collapse, Select } from 'antd';
+import { Table, Collapse, Select } from 'antd';
 
 const { Panel } = Collapse;
 const { Option } = Select;

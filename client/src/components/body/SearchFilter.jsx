@@ -1,14 +1,10 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import './SearchFilter.css';
-import moment from 'moment';
 
-import useAppData from "../../hooks/useAppData";
-
-import { Menu, Checkbox, DatePicker, Space, Button } from 'antd';
+import { Menu, Checkbox, DatePicker, Space} from 'antd';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 const { SubMenu } = Menu;
-// const { RangePicker } = DatePicker;
 
 const rootSubmenuKeys = ['sub1', 'sub2', 'sub3', 'sub4', 'sub5'];
 
@@ -23,8 +19,6 @@ export default function SearchFilter(props) {
       setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
     }
   };
-
-  //const logDate = () => console.log(moment().format('dddd'));
 
   return (
     <Menu className="search-filterbox" mode="inline" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256 }}>
